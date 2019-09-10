@@ -1,0 +1,73 @@
+/* Background */
+html, body {min-height: 100%;}
+/*body {background: url('../img/background.jpg') fixed center bottom repeat-x;}*/
+#wos-body {background: #fff; padding: 8px;}
+.navbar {margin-bottom: 0px !important;}
+.push {height: 100px;}
+#navbar-footer {background: #dedede; color: #000; margin-bottom: 0;}
+#navbar-footer a {background: #dedede; color: #000; font-weight: bold;}
+
+/* Typography */
+body {
+    font-family: 'Manjari', sans-serif;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+}
+h1, .h1 {font-size: 32px;}
+h2, .h2 {font-size: 26px;}
+h3, .h3 {font-size: 24px;}
+h4, .h4 {font-size: 20px;}
+h5, .h5 {font-size: 16px;}
+h6, .h6 {font-size: 14px;}
+
+.breadcrumb {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+.navbar {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+.navbar-static-top {
+    background: #2980b9;
+}
+#navbar-footer, #navbar-footer a {
+    background: #18C0DF;
+    color: #ffffff;
+}
+blockquote {
+    font-size: 13px;
+}
+
+/* Homepage */
+.home-stat {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+.home-stat-desc {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Game page */
+.fotorama {margin-top: 0px;}
+.game-rating {text-align: right;}
+.game-rating p {margin-top: 5px; display: inline-block; text-align: center; padding: 0 5px; border: 1px solid #ddd;}
+.game-rating span {display: block; font-size: 12px; text-transform: uppercase; padding: 5px; margin: 0 -5px; background: #f5f5f5;}
+
+/* Blog and content pages */
+.wos-content-page {
+    font-size: 15px;
+    line-height: 1.6em;
+}
+.wos-content-page p, .wos-content-page ul, .wos-content-page ol, .wos-content-page img {
+    margin-bottom: 20px;
+}
