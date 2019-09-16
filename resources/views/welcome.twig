@@ -4,28 +4,110 @@
 
 {% block page_body %}
 
-<div class="row">
+<div class="container-fluid">
 
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <h2>
-            Coming soon
-        </h2>
-        <p>
-            At some point, this will resemble a website. Right now, it doesn't.
-        </p>
-    </div>
+    <h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <h2>
-            Coming soon
-        </h2>
-    </div>
+        <div class="row">
 
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <h2>
-            Coming soon
-        </h2>
-    </div>
+            <div class="col">
+
+                <h2>
+                    PoGo Guildford
+                </h2>
+                <p>
+                    This is a community site for the Pokemon Go community in Guildford (UK).
+                </p>
+                {% if auth_guest() %}
+                    <p>
+                        We ask that you <a href="{{ route('register') }}">register</a> to see most of the content on the site.
+                        (Or if you're already a member, <a href="{{ route('login') }}">login</a> here.)
+                    </p>
+                    <p>
+                        Please don't let the registration requirement put you off from joining -
+                        we are a friendly group and are happy to welcome new members.
+                    </p>
+                {% else %}
+                    <p>
+                        <strong>Thanks for joining!</strong> Hopefully this goes without saying, but we ask that you
+                        don't share any of the private content with other people.
+                    </p>
+                {% endif %}
+
+            </div>
+
+            <div class="col">
+
+                {% if auth_guest() %}
+                    <h2>Tips before you join</h2>
+                    <p>
+                        It's worth joining our <a href="https://www.facebook.com/groups/PoGoGuildford/" target="_blank">Facebook group</a>
+                        if you're not already a member. You can share your trainer code there and also apply to join our
+                        Discord group. If we already know who you are, it's a no brainer to let you into the community site.
+                    </p>
+                {% else %}
+                    <h2>I see you are logged in...</h2>
+                    <p>
+                        Some other secret stuff will go here.
+                    </p>
+                {% endif %}
+
+            </div>
+
+            <div class="col">
+
+                <h2>Staff</h2>
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Ayumi</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>catbob</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>Colonel Binface</td>
+                        <td>Admin / Event coordinator</td>
+                    </tr>
+                    <tr>
+                        <td>dgzip</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>George the whale master</td>
+                        <td>Event coordinator</td>
+                    </tr>
+                    <tr>
+                        <td>shellyloves666</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>switchben</td>
+                        <td>Admin / Website owner</td>
+                    </tr>
+                    <tr>
+                        <td>Phoennetic</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>Joe / Micronex</td>
+                        <td>Admin</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
 
 </div>
 

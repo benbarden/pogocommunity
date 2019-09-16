@@ -31,11 +31,15 @@ h6, .h6 {font-size: 14px;}
 }
 .navbar {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
 }
 .navbar-static-top {
     background: #2980b9;
+}
+#pogocomm-nav-top a {
+    background: #2980b9;
+    color: #ffffff;
 }
 #navbar-footer, #navbar-footer a {
     background: #18C0DF;
