@@ -15,3 +15,19 @@
 Route::get('/', 'WelcomeController@show')->name('welcome');
 
 Auth::routes();
+
+// Members
+Route::group(['middleware' => ['auth.user.all']], function() {
+
+    // Index
+    Route::get('/user', 'User/DashboardController@show')->name('user.dashboard');
+
+});
+
+// Approved members
+Route::group(['middleware' => ['auth.user.approved']], function() {
+
+    // Index
+    Route::get('/user/member-list', 'User/MemberListController@show')->name('user.member-list');
+
+});
