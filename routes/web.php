@@ -17,17 +17,17 @@ Route::get('/', 'WelcomeController@show')->name('welcome');
 Auth::routes();
 
 // Members
-Route::group(['middleware' => ['auth.user.all']], function() {
+Route::group(['middleware' => ['auth']], function() {
 
     // Index
-    Route::get('/user', 'User/DashboardController@show')->name('user.dashboard');
+    Route::get('/user', 'User\DashboardController@show')->name('user.dashboard');
 
 });
 
 // Approved members
-Route::group(['middleware' => ['auth.user.approved']], function() {
+Route::group(['middleware' => ['auth.approved']], function() {
 
     // Index
-    Route::get('/user/member-list', 'User/MemberListController@show')->name('user.member-list');
+    Route::get('/user/member-list', 'User\MemberListController@show')->name('user.member-list');
 
 });
