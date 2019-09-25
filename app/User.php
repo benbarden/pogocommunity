@@ -10,13 +10,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const STATUS_PENDING = 'Pending';
+    const STATUS_APPROVED = 'Approved';
+    const STATUS_REJECTED = 'Rejected';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_approved', 'user_roles', 'is_staff', 'is_owner'
+        'name', 'email', 'password', 'user_roles', 'is_staff', 'is_owner', 'status'
     ];
 
     /**
@@ -35,7 +39,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-//        'is_approved' => 'boolean',
         'user_roles' => 'array',
         'is_staff' => 'boolean',
         'is_owner' => 'boolean',
@@ -44,17 +47,17 @@ class User extends Authenticatable
     /**
      * @return bool
      */
-    public function isApproved()
+    public function isPending()
     {
-        return $this->is_approved == 1;
+        return $this->status == self::STATUS_PENDING;
     }
 
     /**
      * @return bool
      */
-    public function isPending()
+    public function isApproved()
     {
-        return $this->is_approved == null;
+        return $this->status == self::STATUS_APPROVED;
     }
 
     /**
@@ -62,7 +65,7 @@ class User extends Authenticatable
      */
     public function isRejected()
     {
-        return $this->is_approved == 9;
+        return $this->status == self::STATUS_REJECTED;
     }
 
     /**

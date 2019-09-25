@@ -27,13 +27,13 @@ class UserTest extends TestCase
         parent::setUp();
 
         $this->userPending = new User(
-            ['name' => 'Paul Pending', 'email' => 'pending@google.com']
+            ['name' => 'Paul Pending', 'email' => 'pending@google.com', 'status' => User::STATUS_PENDING]
         );
         $this->userApproved = new User(
-            ['name' => 'Amy Approved', 'email' => 'amy@floogle.com', 'is_approved' => '1']
+            ['name' => 'Amy Approved', 'email' => 'amy@floogle.com', 'status' => User::STATUS_APPROVED]
         );
         $this->userRejected = new User(
-            ['name' => 'Roger Rejected', 'email' => 'roge@ploogle.com', 'is_approved' => '9']
+            ['name' => 'Roger Rejected', 'email' => 'roge@ploogle.com', 'status' => User::STATUS_REJECTED]
         );
     }
 

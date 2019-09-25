@@ -6,68 +6,128 @@
 
     <h1 class="mt-5">Register</h1>
 
-    <p>
-        Register for the site using the below form.
-        <br>
-        Already a member? <a href="{{ route('login') }}">Login here</a>.
-    </p>
-    <h3>Enter your details</h3>
-    {% if errors.any %}
-        <p>
-            There were some problems with your submission:
-        </p>
-        <ul>
-            {% for error in errors.all %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <div class="row">
 
-    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-        {{ csrf_field() }}
+        <div class="col-8">
 
-        <div class="form-group">
-            <label for="name" class="col-md-4 control-label">Display name</label>
-            <small>use your Discord name or trainer name</small>
+            <p>
+                Register for the site using the below form.
+            </p>
 
-            <div class="col-md-6">
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-            </div>
+            <h3>Your details</h3>
+            {% if errors.any %}
+                <p>
+                    There were some problems with your submission:
+                </p>
+                <ul>
+                    {% for error in errors.all %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <label for="name" class="col-md-4 control-label">Display name</label>
+                    <small>how you want to be named on this site</small>
+
+                    <div class="col-md-6">
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-md-4 control-label">Email address</label>
+                    <small>you'll use this to log in</small>
+
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-md-4 control-label">Password</label>
+                    <small>must be at least 8 characters</small>
+
+                    <div class="col-md-6">
+                        <input id="password" type="password" class="form-control" name="password" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password-confirm" class="col-md-4 control-label">Confirm password</label>
+                    <small>because once isn't enough</small>
+
+                    <div class="col-md-6">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                    </div>
+                </div>
+
+                <h3>Your trainer details</h3>
+
+                <p>
+                    Enter your <strong>main</strong> account details below.
+                    <br>
+                    If you have multiple accounts, you can add them later.
+                </p>
+                <p>
+                    Please do not add accounts owned by friends, partners etc.
+                    <br>
+                    They need to register for the website and add their own details.
+                </p>
+
+                <div class="form-group">
+                    <label for="trainer-name" class="col-md-4 control-label">Trainer name</label>
+
+                    <div class="col-md-6">
+                        <input id="trainer-name" type="text" class="form-control" name="trainer-name" value="{{ old('trainer-name') }}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trainer-code" class="col-md-4 control-label">Trainer code</label>
+
+                    <div class="col-md-6">
+                        <input id="trainer-code" type="text" class="form-control" name="trainer-code" value="{{ old('trainer-code') }}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trainer-team" class="col-md-4 control-label">Team</label>
+
+                    <div class="col-md-6">
+                        <select id="trainer-team" name="trainer-team" class="form-control" required>
+                            <option value="">&nbsp;</option>
+                            <option value="Instinct">Instinct (yellow)</option>
+                            <option value="Mystic">Mystic (blue)</option>
+                            <option value="Valor">Valor (red)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Register
+                        </button>
+                    </div>
+                </div>
+            </form>
+
         </div>
 
-        <div class="form-group">
-            <label for="email" class="col-md-4 control-label">Email address</label>
+        <div class="col">
 
-            <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-            </div>
+            <h2>Existing members</h2>
+            <p>
+                Already a member? <a href="{{ route('login') }}">Login here</a>.
+            </p>
+
         </div>
 
-        <div class="form-group">
-            <label for="password" class="col-md-4 control-label">Password</label>
-            <small>must be at least 8 characters</small>
-
-            <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-            <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">
-                    Register
-                </button>
-            </div>
-        </div>
-    </form>
+    </div>
 
 </div>
 
