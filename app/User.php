@@ -44,6 +44,11 @@ class User extends Authenticatable
         'is_owner' => 'boolean',
     ];
 
+    public function trainers()
+    {
+        return $this->hasMany('App\Trainer', 'user_id', 'id');
+    }
+
     /**
      * @return bool
      */
