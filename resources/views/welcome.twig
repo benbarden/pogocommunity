@@ -29,8 +29,8 @@
                     </p>
                 {% else %}
                     <p>
-                        <strong>Thanks for joining!</strong> Hopefully this goes without saying, but we ask that you
-                        don't share any of the private content with other people.
+                        <strong>Thanks for joining!</strong> As this is a private community, we ask that you
+                        don't share anything from the site with others.
                     </p>
                 {% endif %}
 
@@ -43,13 +43,28 @@
                     <p>
                         It's worth joining our <a href="https://www.facebook.com/groups/PoGoGuildford/" target="_blank">Facebook group</a>
                         if you're not already a member. You can share your trainer code there and also apply to join our
-                        Discord group. If we already know who you are, it's a no brainer to let you into the community site.
+                        Discord group. If we already know who you are, it's much easier for us to let you into the community site.
                     </p>
                 {% else %}
-                    <h2>I see you are logged in...</h2>
-                    <p>
-                        Some other secret stuff will go here.
-                    </p>
+                    <h2>Thanks for joining!</h2>
+                    {% if auth_user().isApproved() %}
+                        <p>
+                            You are approved - welcome!
+                        </p>
+                    {% elseif auth_user().isPending() %}
+                        <p>
+                            Please wait while we review your account.
+                        </p>
+                    {% elseif auth_user().isRejected() %}
+                        <!--
+                        <p>
+                        </p>
+                        -->
+                    {% else %}
+                        <p>
+                            Hmm, something's not right here!
+                        </p>
+                    {% endif %}
                 {% endif %}
 
             </div>

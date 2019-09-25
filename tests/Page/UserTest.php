@@ -10,30 +10,39 @@ class UserTest extends TestCase
     /**
      * @var User
      */
-    private $userNotApproved;
+    private $userPending;
 
     /**
      * @var User
      */
     private $userApproved;
 
+    /**
+     * @var User
+     */
+    private $userRejected;
+
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->userNotApproved = new User(
-            ['name' => 'Nigel Not Approved', 'email' => 'nige@google.com']
+        $this->userPending = new User(
+            ['name' => 'Paul Pending', 'email' => 'pending@google.com']
         );
         $this->userApproved = new User(
-            ['name' => 'Amber Approved', 'email' => 'amber@floogle.com', 'is_approved' => '1']
+            ['name' => 'Amy Approved', 'email' => 'amy@floogle.com', 'is_approved' => '1']
+        );
+        $this->userRejected = new User(
+            ['name' => 'Roger Rejected', 'email' => 'roge@ploogle.com', 'is_approved' => '9']
         );
     }
 
     public function tearDown(): void
     {
         parent::tearDown();
-        unset($this->userNotApproved);
+        unset($this->userPending);
         unset($this->userApproved);
+        unset($this->userRejected);
     }
 
     public function testUserDashLoggedOut(): void
@@ -49,9 +58,16 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testUserDashNotApproved(): void
+    public function testUserDashPending(): void
     {
-        $this->be($this->userNotApproved);
+        $this->be($this->userPending);
+        $response = $this->get('/user');
+        $response->assertStatus(200);
+    }
+
+    public function testUserDashRejected(): void
+    {
+        $this->be($this->userRejected);
         $response = $this->get('/user');
         $response->assertStatus(200);
     }
@@ -63,11 +79,17 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testUserMemberListNotApproved(): void
+    public function testUserMemberListPending(): void
     {
-        $this->be($this->userNotApproved);
+        $this->be($this->userPending);
         $response = $this->get('/user/member-list');
         $response->assertStatus(401);
     }
 
+    public function testUserMemberListRejected(): void
+    {
+        $this->be($this->userRejected);
+        $response = $this->get('/user/member-list');
+        $response->assertStatus(401);
+    }
 }

@@ -35,7 +35,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_approved' => 'boolean',
+//        'is_approved' => 'boolean',
         'user_roles' => 'array',
         'is_staff' => 'boolean',
         'is_owner' => 'boolean',
@@ -47,6 +47,22 @@ class User extends Authenticatable
     public function isApproved()
     {
         return $this->is_approved == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPending()
+    {
+        return $this->is_approved == null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRejected()
+    {
+        return $this->is_approved == 9;
     }
 
     /**
