@@ -9,6 +9,7 @@ class Trainer extends Model
     const STATUS_PENDING = 'Pending';
     const STATUS_APPROVED = 'Approved';
     const STATUS_REJECTED = 'Rejected';
+    const STATUS_DELETED = 'Deleted';
 
     /**
      * The attributes that are mass assignable.
@@ -57,6 +58,14 @@ class Trainer extends Model
     public function isRejected()
     {
         return $this->status == self::STATUS_REJECTED;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDeleted()
+    {
+        return $this->status == self::STATUS_DELETED;
     }
 
     public function user()
