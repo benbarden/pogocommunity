@@ -31,3 +31,21 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/member-list', 'User\MemberListController@show')->name('user.member-list');
 
 });
+
+// Staff
+Route::group(['middleware' => ['auth.staff']], function() {
+
+    // Index
+    Route::get('/staff', 'Staff\DashboardController@index')->name('staff.dashboard');
+
+    // User management
+    Route::get('/staff/user/list', 'Staff\UserController@showList')
+        ->name('staff.user.list')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+
+    Route::get('/staff/pokedex', 'Staff\PokedexController@dashboard')
+        ->name('staff.pokedex.dashboard')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
+
+});
+
