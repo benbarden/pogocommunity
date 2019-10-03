@@ -42,7 +42,14 @@ Route::group(['middleware' => ['auth.staff']], function() {
     Route::get('/staff/user/list', 'Staff\UserController@showList')
         ->name('staff.user.list')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+    Route::get('/staff/user/edit/{userId}', 'Staff\UserController@editUser')
+        ->name('staff.user.edit')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+    Route::post('/staff/user/edit/{userId}', 'Staff\UserController@editUser')
+        ->name('staff.user.edit')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
 
+    // Pokedex management
     Route::get('/staff/pokedex', 'Staff\PokedexController@dashboard')
         ->name('staff.pokedex.dashboard')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);

@@ -73,6 +73,15 @@ class User extends Authenticatable
         return $this->status == self::STATUS_REJECTED;
     }
 
+    public static function getStatusList()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_APPROVED,
+            self::STATUS_REJECTED,
+        ];
+    }
+
     /**
      * @return bool
      */

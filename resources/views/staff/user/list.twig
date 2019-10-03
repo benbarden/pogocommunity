@@ -52,7 +52,17 @@
                             {{ item.status }}
                         </td>
                         <td class="text-center">
-                            Edit
+                            {% if item.isOwner() %}
+                                {% if auth_user().isOwner() %}
+                                    <a href="{{ route('staff.user.edit', {'userId': item.id}) }}">Edit</a>
+                                {% endif %}
+                            {% elseif item.isStaff() %}
+                                {% if auth_user().isOwner() %}
+                                    <a href="{{ route('staff.user.edit', {'userId': item.id}) }}">Edit</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{{ route('staff.user.edit', {'userId': item.id}) }}">Edit</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

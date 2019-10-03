@@ -1,0 +1,17 @@
+{% if errors.any %}
+    <div class="alert alert-danger">
+        <p>
+            There were some problems with your submission:
+        </p>
+        <ul>
+            {% for error in errors.all %}
+                <!-- standard error --><li>{{ error }}</li>
+            {% endfor %}
+            {% if ErrorsCustom %}
+                {% for error in ErrorsCustom %}
+                    <!-- custom error --><li>{{ error }}</li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}
