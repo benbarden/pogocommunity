@@ -38,20 +38,28 @@ Route::group(['middleware' => ['auth.staff']], function() {
     // Index
     Route::get('/staff', 'Staff\DashboardController@index')->name('staff.dashboard');
 
-    // User management
-    Route::get('/staff/user/list', 'Staff\UserController@showList')
-        ->name('staff.user.list')
+    // Users
+    Route::get('/staff/user/list', 'Staff\UserController@showList')->name('staff.user.list')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
-    Route::get('/staff/user/edit/{userId}', 'Staff\UserController@editUser')
-        ->name('staff.user.edit')
+
+    Route::get('/staff/user/edit/{userId}', 'Staff\UserController@editUser')->name('staff.user.edit')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
-    Route::post('/staff/user/edit/{userId}', 'Staff\UserController@editUser')
-        ->name('staff.user.edit')
+
+    Route::post('/staff/user/edit/{userId}', 'Staff\UserController@editUser')->name('staff.user.edit')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+
+    // Trainers
+    Route::get('/staff/trainer/list', 'Staff\TrainerController@showList')->name('staff.trainer.list')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+
+    Route::get('/staff/trainer/edit/{trainerId}', 'Staff\TrainerController@editTrainer')->name('staff.trainer.edit')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
+
+    Route::post('/staff/trainer/edit/{trainerId}', 'Staff\TrainerController@editTrainer')->name('staff.trainer.edit')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
 
     // Pokedex management
-    Route::get('/staff/pokedex', 'Staff\PokedexController@dashboard')
-        ->name('staff.pokedex.dashboard')
+    Route::get('/staff/pokedex', 'Staff\PokedexController@dashboard')->name('staff.pokedex.dashboard')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
 
 });

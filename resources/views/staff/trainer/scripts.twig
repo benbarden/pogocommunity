@@ -1,0 +1,30 @@
+<script>
+
+    var formMode = '{{ FormMode }}';
+    var formVals = [];
+
+    if (formMode == 'edit') {
+
+        // This is used when editing existing records.
+        formVals['trainer_name'] = "{{ TrainerData.trainer_name }}";
+        formVals['trainer_code'] = "{{ TrainerData.trainer_code }}";
+        formVals['trainer_team'] = "{{ TrainerData.trainer_team }}";
+        formVals['status'] = "{{ TrainerData.status }}";
+
+    } else {
+
+        // This is used for new records.
+        // It's also used when submitting the edit version, to avoid the DB data overwriting the form.
+        formVals['trainer_name'] = "{{ old('trainer_name') }}";
+        formVals['trainer_code'] = "{{ old('trainer_code') }}";
+        formVals['trainer_team'] = "{{ old('trainer_team') }}";
+        formVals['status'] = "{{ old('status') }}";
+
+    }
+
+    $('#trainer_name').val(formVals['trainer_name']);
+    $('#trainer_code').val(formVals['trainer_code']);
+    $('#trainer_team').val(formVals['trainer_team']);
+    $('#status').val(formVals['status']);
+
+</script>

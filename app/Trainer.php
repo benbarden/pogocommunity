@@ -11,6 +11,10 @@ class Trainer extends Model
     const STATUS_REJECTED = 'Rejected';
     const STATUS_DELETED = 'Deleted';
 
+    const TEAM_INSTINCT = 'Instinct';
+    const TEAM_MYSTIC = 'Mystic';
+    const TEAM_VALOR = 'Valor';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -66,6 +70,25 @@ class Trainer extends Model
     public function isDeleted()
     {
         return $this->status == self::STATUS_DELETED;
+    }
+
+    public static function getStatusList()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_APPROVED,
+            self::STATUS_REJECTED,
+            self::STATUS_DELETED,
+        ];
+    }
+
+    public static function getTeamList()
+    {
+        return [
+            self::TEAM_INSTINCT => 'Instinct (yellow)',
+            self::TEAM_MYSTIC => 'Mystic (blue)',
+            self::TEAM_VALOR => 'Valor (red)',
+        ];
     }
 
     public function user()
