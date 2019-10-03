@@ -1,0 +1,68 @@
+{% extends 'theme/pogo/base.twig' %}
+
+{% block page_body %}
+
+<div class="container-fluid">
+
+    <h1 class="mt-5">{{ PageTitle }}</h1>
+
+    <div class="row">
+
+        <div class="col">
+
+            {% if TrainerList.count > 0 %}
+            <table class="table data-sortable">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Team</th>
+                    <th class="text-center">Joined</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in TrainerList %}
+                    <tr>
+                        <td>
+                            {{ item.trainer_name }}
+                        </td>
+                        <td class="text-center">
+                            {{ item.trainer_code }}
+                        </td>
+                        <td class="text-center">
+                            {{ item.trainer_team }}
+                        </td>
+                        <td class="text-center">
+                            {{ item.created_at|date('Y-m-d') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+                <p>No trainers found!</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.data-sortable').DataTable({
+            "order": [0, 'desc'],
+            "pageLength": 25,
+            "columns": [
+                null,
+                null,
+                null,
+                null
+            ]
+        });
+    });
+</script>
+
+{% endblock page_body %}

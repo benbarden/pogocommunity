@@ -22,6 +22,11 @@ class TrainerService
         return Trainer::orderBy('created_at', 'desc')->get();
     }
 
+    public function getApproved()
+    {
+        return Trainer::where('status', Trainer::STATUS_APPROVED)->orderBy('created_at', 'desc')->get();
+    }
+
     public function getCount()
     {
         return Trainer::orderBy('created_at', 'desc')->count();

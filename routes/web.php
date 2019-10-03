@@ -28,7 +28,8 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['auth.approved']], function() {
 
     // Index
-    Route::get('/user/member-list', 'User\MemberListController@show')->name('user.member-list');
+    Route::get('/user/trainers', 'User\MemberListController@showTrainers')->name('user.trainers');
+    Route::get('/user/members', 'User\MemberListController@showMembers')->name('user.members');
 
 });
 
