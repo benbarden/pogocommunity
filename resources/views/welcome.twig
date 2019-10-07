@@ -71,6 +71,12 @@
 
             <div class="col">
 
+                {% if auth_user().isApproved() %}
+                    <h2>Changelog</h2>
+                    <ul>
+                        <li>7th Oct: Fixed hamburger menu on mobile</li>
+                    </ul>
+                {% endif %}
 
             </div>
 
