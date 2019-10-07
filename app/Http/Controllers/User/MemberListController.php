@@ -37,4 +37,41 @@ class MemberListController extends Controller
 
         return view('user.member-list.members', $bindings);
     }
+
+    public function showTrainerProfile($trainerId)
+    {
+        $trainerData = $this->getServiceTrainer()->find($trainerId);
+        if (!$trainerData) abort(404);
+
+        if (!$trainerData->isApproved()) abort(404);
+
+        $bindings = [];
+
+        $bindings['TopTitle'] = 'Trainer profile: '.$trainerData->trainer_name;
+        $bindings['PageTitle'] = 'Trainer profile: '.$trainerData->trainer_name;
+
+        $bindings['TrainerData'] = $trainerData;
+
+        return view('user.member-list.trainerProfile', $bindings);
+    }
+
+    public function showMemberProfile($memberId)
+    {
+        $memberData = $this->getServiceUser()->find($memberId);
+        if (!$memberData) abort(404);
+
+        if (!$memberData->isApproved()) abort(404);
+
+        $memberTrainers = $this->getServiceTrainer()->getApprovedByUser($memberId);
+
+        $bindings = [];
+
+        $bindings['TopTitle'] = 'Member profile: '.$memberData->name;
+        $bindings['PageTitle'] = 'Member profile: '.$memberData->name;
+
+        $bindings['MemberData'] = $memberData;
+        $bindings['MemberTrainers'] = $memberTrainers;
+
+        return view('user.member-list.memberProfile', $bindings);
+    }
 }

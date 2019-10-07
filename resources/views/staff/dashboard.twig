@@ -28,8 +28,24 @@
                     User management
                 </h2>
                 <ul>
-                    <li><a href="{{ route('staff.user.list') }}">User list</a></li>
-                    <li><a href="{{ route('staff.trainer.list') }}">Trainer list</a></li>
+                    <li>
+                        <a href="{{ route('staff.user.list') }}">
+                            User list
+                            {% if staffPendingUserCount > 0 %}
+                            <span class="badge badge-light">{{ staffPendingUserCount }} pending</span>
+                            <span class="sr-only">awaiting approval</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('staff.trainer.list') }}">
+                            Trainer list
+                            {% if staffPendingTrainerCount > 0 %}
+                            <span class="badge badge-light">{{ staffPendingTrainerCount }} pending</span>
+                            <span class="sr-only">awaiting approval</span>
+                            {% endif %}
+                        </a>
+                    </li>
                 </ul>
                 {% endif %}
 

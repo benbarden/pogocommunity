@@ -31,6 +31,10 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/trainers', 'User\MemberListController@showTrainers')->name('user.trainers');
     Route::get('/user/members', 'User\MemberListController@showMembers')->name('user.members');
 
+    // Profiles
+    Route::get('/user/trainers/{trainerId}', 'User\MemberListController@showTrainerProfile')->name('user.trainers.profile');
+    Route::get('/user/members/{memberId}', 'User\MemberListController@showMemberProfile')->name('user.members.profile');
+
 });
 
 // Staff

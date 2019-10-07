@@ -31,10 +31,10 @@ class ViewRandomFooter
             'a shiny Barboach (which nobody wants)',
             'a Diglett in a wig (Wiglett)',
             'a medium-rare Purrloin',
-            'a Vespiqueen singing \'We Will Rock You\'',
+            'a Vespique(e)n singing \'We Will Rock You\'',
             'Shaun the Mareep',
             'a hyperactive Chimchar',
-            'a murder of Murkrows'
+            'a murder of Purple Murkrows'
         ];
         \View::share('siteRandomFooters', $randomFooters);
 

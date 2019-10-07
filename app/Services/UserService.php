@@ -31,4 +31,9 @@ class UserService
     {
         return User::orderBy('created_at', 'desc')->count();
     }
+
+    public function getPendingCount()
+    {
+        return User::where('status', User::STATUS_PENDING)->count();
+    }
 }

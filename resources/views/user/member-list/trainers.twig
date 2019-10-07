@@ -24,7 +24,10 @@
                 {% for item in TrainerList %}
                     <tr>
                         <td>
-                            {{ item.trainer_name }}
+                            {% if item.user.isStaff() %}
+                                <span class="badge badge-info">Staff</span>
+                            {% endif %}
+                            <a href="{{ route('user.trainers.profile', {'trainerId': item.id}) }}">{{ item.trainer_name }}</a>
                         </td>
                         <td class="text-center">
                             {{ item.trainer_code }}

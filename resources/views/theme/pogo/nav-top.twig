@@ -15,7 +15,13 @@
                 </li>
                 {% if auth_user().isStaff() %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('staff.dashboard') }}">Staff dashboard</a>
+                        <a class="nav-link" href="{{ route('staff.dashboard') }}">
+                            Staff dashboard
+                            {% if staffPendingTotalCount > 0 %}
+                            <span class="badge badge-light">{{ staffPendingTotalCount }}</span>
+                            <span class="sr-only">awaiting approval</span>
+                            {% endif %}
+                        </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">

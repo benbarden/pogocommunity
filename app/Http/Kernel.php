@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             // PoGo Comm custom
             \App\Http\Middleware\ViewRandomFooter::class,
+            \App\Http\Middleware\ViewStaffCounters::class,
         ],
 
         'api' => [

@@ -27,8 +27,18 @@ class TrainerService
         return Trainer::where('status', Trainer::STATUS_APPROVED)->orderBy('created_at', 'desc')->get();
     }
 
+    public function getApprovedByUser($userId)
+    {
+        return Trainer::where('user_id', $userId)->where('status', Trainer::STATUS_APPROVED)->orderBy('created_at', 'desc')->get();
+    }
+
     public function getCount()
     {
         return Trainer::orderBy('created_at', 'desc')->count();
+    }
+
+    public function getPendingCount()
+    {
+        return Trainer::where('status', Trainer::STATUS_PENDING)->count();
     }
 }

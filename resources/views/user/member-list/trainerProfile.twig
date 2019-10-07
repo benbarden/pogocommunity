@@ -1,0 +1,57 @@
+{% extends 'theme/pogo/base.twig' %}
+
+{% set hideHeader = true %}
+
+{% block page_body %}
+
+<div class="container-fluid">
+
+    <h1 class="mt-5">{{ PageTitle }}</h1>
+
+        <div class="row">
+
+            <div class="col">
+
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ TrainerData.trainer_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Code</td>
+                        <td>{{ TrainerData.trainer_code }}</td>
+                    </tr>
+                    <tr>
+                        <td>Team</td>
+                        <td>{{ TrainerData.trainer_team }}</td>
+                    </tr>
+                    <tr>
+                        <td>Joined</td>
+                        <td>{{ TrainerData.created_at|date('Y-m-d') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Owned by</td>
+                        <td>
+                            {% if TrainerData.user.isStaff() %}
+                                <span class="badge badge-info">Staff</span>
+                            {% endif %}
+                            <a href="{{ route('user.members.profile', {'memberId': TrainerData.user.id}) }}">{{ TrainerData.user.name }}</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock page_body %}

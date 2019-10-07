@@ -22,7 +22,10 @@
                 {% for item in UserList %}
                     <tr>
                         <td>
-                            {{ item.name }}
+                            {% if item.isStaff() %}
+                                <span class="badge badge-info">Staff</span>
+                            {% endif %}
+                            <a href="{{ route('user.members.profile', {'memberId': item.id}) }}">{{ item.name }}</a>
                         </td>
                         <td class="text-center">
                             {{ item.created_at|date('Y-m-d') }}
