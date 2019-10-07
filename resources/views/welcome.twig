@@ -29,7 +29,7 @@
                     </p>
                 {% else %}
                     <p>
-                        <strong>Thanks for joining!</strong> As this is a private community, we ask that you
+                        As this is a private community, we ask that you
                         don't share anything from the site with others.
                     </p>
                 {% endif %}
@@ -49,7 +49,10 @@
                     <h2>Thanks for joining!</h2>
                     {% if auth_user().isApproved() %}
                         <p>
-                            You are approved - welcome!
+                            You are approved - thanks for joining, and welcome!
+                        </p>
+                        <p>
+                            Now go to the <a href="{{ route('user.dashboard') }}">User dashboard</a> to see what's what.
                         </p>
                     {% elseif auth_user().isPending() %}
                         <p>
