@@ -27,6 +27,14 @@ class ViewRandomFooter
             'a shiny lucky hundo flower crown Flareon with 12 legs',
             'a lemon meringue Caterpie',
             'a yellow Snover',
+            'My Little Ponyta',
+            'a shiny Barboach (which nobody wants)',
+            'a Diglett in a wig (Wiglett)',
+            'a medium-rare Purrloin',
+            'a Vespiqueen singing \'We Will Rock You\'',
+            'Shaun the Mareep',
+            'a hyperactive Chimchar',
+            'a murder of Murkrows'
         ];
         \View::share('siteRandomFooters', $randomFooters);
 
