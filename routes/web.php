@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
     Route::post('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
 
+    // Maps
+    Route::get('/user/maps/pokestops', 'User\MapsController@showPokestops')->name('user.maps.pokestops');
+
 });
 
 // Staff
