@@ -31,6 +31,18 @@
     <meta property="og:url" content="{{ url().current() }}" />
     <meta property="og:title" content="{{ PageTitle }}" />
 
+    {% if siteEnv == 'prod' %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3185140-39"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-3185140-39');
+        </script>
+    {% endif %}
+
 </head>
 
 <body>
@@ -58,5 +70,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
-<!-- {{ env }} | {{ region }} | {{ uid }} -->
+<!-- {{ siteEnv }} -->
 </html>

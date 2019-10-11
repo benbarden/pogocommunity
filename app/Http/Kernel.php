@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             // PoGo Comm custom
+            \App\Http\Middleware\ViewGlobals::class,
             \App\Http\Middleware\ViewRandomFooter::class,
             \App\Http\Middleware\ViewStaffCounters::class,
         ],
