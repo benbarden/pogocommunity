@@ -5,6 +5,8 @@ namespace App\Services;
 
 use App\Trainer;
 
+use Illuminate\Support\Facades\DB;
+
 
 class TrainerService
 {
@@ -40,5 +42,10 @@ class TrainerService
     public function getPendingCount()
     {
         return Trainer::where('status', Trainer::STATUS_PENDING)->count();
+    }
+
+    public function getTeamCounts()
+    {
+        return DB::select('SELECT trainer_team, count(*) as count FROM trainers GROUP BY trainer_team');
     }
 }

@@ -38,6 +38,11 @@
 
             <div class="col-12 col-md-4">
 
+                <h2>
+                    Trainer split
+                </h2>
+                <canvas id="teamSplit"></canvas>
+                {#
                 <h2>Staff</h2>
                 <table class="table">
                     <thead class="thead-light">
@@ -85,11 +90,44 @@
                     </tr>
                     </tbody>
                 </table>
+                #}
 
             </div>
 
         </div>
 
 </div>
+
+{% if AuthUser.isApproved() %}
+<script>
+    var ctx = document.getElementById('teamSplit').getContext('2d');
+    var pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    {% for item in TeamCounts %}
+                    {{ item.count }}
+                    {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ],
+                backgroundColor: [
+                    {% for item in TeamCounts %}
+                    '{{ item.colour }}'
+                    {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            }],
+            labels: [
+                {% for item in TeamCounts %}
+                '{{ item.trainer_team }}'
+                {% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+    });
+
+</script>
+{% endif %}
 
 {% endblock page_body %}
