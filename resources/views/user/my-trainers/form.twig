@@ -1,0 +1,39 @@
+
+{% include 'common/form-errors.twig' %}
+<form class="form-horizontal" role="form" method="post" action="{{ formSubmitAction }}">
+    {{ csrf_field() }}
+
+    <div class="form-group">
+        <label for="trainer_name" class="col-md-4 control-label">Trainer name</label>
+        <div class="col-md-6">
+            <input id="trainer_name" type="text" class="form-control" name="trainer_name" readonly onfocus="this.removeAttribute('readonly');"required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="trainer_code" class="col-md-4 control-label">Trainer code</label>
+        <div class="col-md-6">
+            <input id="trainer_code" type="text" class="form-control" name="trainer_code" readonly onfocus="this.removeAttribute('readonly');"required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="trainer_team" class="col-md-4 control-label">Trainer team</label>
+        <div class="col-md-6">
+            <select id="trainer_team" name="trainer_team" class="form-control" required>
+                <option value="">&nbsp;</option>
+                {% for key,item in TeamList %}
+                    <option value="{{ key }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8 col-md-offset-4">
+            <button type="submit" class="btn outline btn-primary">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>

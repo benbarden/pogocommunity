@@ -1,0 +1,22 @@
+{% extends 'theme/pogo/base.twig' %}
+
+{% block page_body %}
+
+{% set formSubmitAction = route('user.my-trainers.edit', {'trainerId': TrainerId}) %}
+<div class="container-fluid">
+
+    <h1 class="mt-5">{{ PageTitle }}</h1>
+
+    <div class="row">
+
+        <div class="col-12">
+            {% include 'user/my-trainers/form.twig' with {'formSubmitAction': formSubmitAction} %}
+        </div>
+
+    </div>
+
+</div>
+
+{% include 'user/my-trainers/scripts.twig' %}
+
+{% endblock page_body %}

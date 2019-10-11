@@ -35,6 +35,16 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/trainers/{trainerId}', 'User\MemberListController@showTrainerProfile')->name('user.trainers.profile');
     Route::get('/user/members/{memberId}', 'User\MemberListController@showMemberProfile')->name('user.members.profile');
 
+    // My details
+    Route::get('/user/my-details', 'User\MyDetailsController@show')->name('user.my-details.show');
+    Route::get('/user/my-details/edit', 'User\MyDetailsController@edit')->name('user.my-details.edit');
+    Route::post('/user/my-details/edit', 'User\MyDetailsController@edit')->name('user.my-details.edit');
+    Route::get('/user/my-trainers', 'User\MyTrainersController@show')->name('user.my-trainers.show');
+    Route::get('/user/my-trainers/add', 'User\MyTrainersController@add')->name('user.my-trainers.add');
+    Route::post('/user/my-trainers/add', 'User\MyTrainersController@add')->name('user.my-trainers.add');
+    Route::get('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
+    Route::post('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
+
 });
 
 // Staff

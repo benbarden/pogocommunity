@@ -31,7 +31,7 @@ class TrainerService
 
     public function getApprovedByUser($userId)
     {
-        return Trainer::where('user_id', $userId)->where('status', Trainer::STATUS_APPROVED)->orderBy('created_at', 'desc')->get();
+        return Trainer::where('user_id', $userId)->where('status', Trainer::STATUS_APPROVED)->orderBy('created_at', 'asc')->get();
     }
 
     public function getCount()

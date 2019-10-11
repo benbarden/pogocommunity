@@ -13,12 +13,19 @@
             <div class="col-12 col-md-4">
 
                 <h2>
-                    Hi, {{ AuthUser.name }}!
+                    Welcome, {{ AuthUser.name }}!
                 </h2>
-                <p>
-                    It looks like you've logged in successfully. This is where we should probably put some
-                    useful information and links. We'll do that soon.
-                </p>
+                {% if AuthUser.isApproved() %}
+                    <ul>
+                        <li><a href="{{ route('user.my-details.show') }}">My details</a></li>
+                        <li><a href="{{ route('user.my-trainers.show') }}">My trainers</a></li>
+                    </ul>
+                {% elseif AuthUser.isPending() %}
+                    <p>
+                        <strong>Your account is currently awaiting approval</strong>.
+                        Please come back soon!
+                    </p>
+                {% endif %}
 
             </div>
 
