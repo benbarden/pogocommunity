@@ -14,6 +14,9 @@
 // Front page
 Route::get('/', 'WelcomeController@show')->name('welcome');
 
+// Static content
+Route::get('/privacy', 'StaticContentController@privacy')->name('static-content.privacy');
+
 Auth::routes();
 
 // Members
