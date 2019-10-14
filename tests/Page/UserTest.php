@@ -75,21 +75,21 @@ class UserTest extends TestCase
     public function testUserMemberListApproved(): void
     {
         $this->be($this->userApproved);
-        $response = $this->get('/user/member-list');
+        $response = $this->get('/user/members');
         $response->assertStatus(200);
     }
 
     public function testUserMemberListPending(): void
     {
         $this->be($this->userPending);
-        $response = $this->get('/user/member-list');
+        $response = $this->get('/user/members');
         $response->assertStatus(401);
     }
 
     public function testUserMemberListRejected(): void
     {
         $this->be($this->userRejected);
-        $response = $this->get('/user/member-list');
+        $response = $this->get('/user/members');
         $response->assertStatus(401);
     }
 }
