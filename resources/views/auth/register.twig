@@ -25,7 +25,7 @@
                     <small>how you want to be named on this site</small>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" maxlength="30" required autofocus>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                     <small>you'll use this to log in</small>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" maxlength="255" required>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@
                     <label for="trainer_name" class="col-md-4 control-label">Trainer name</label>
 
                     <div class="col-md-6">
-                        <input id="trainer_name" type="text" class="form-control" name="trainer_name" value="{{ old('trainer_name') }}" required>
+                        <input id="trainer_name" type="text" class="form-control" name="trainer_name" value="{{ old('trainer_name') }}" maxlength="30" required>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                     <label for="trainer_code" class="col-md-4 control-label">Trainer code</label>
 
                     <div class="col-md-6">
-                        <input id="trainer_code" type="text" class="form-control" name="trainer_code" value="{{ old('trainer_code') }}" required>
+                        <input id="trainer_code" type="text" class="form-control" name="trainer_code" value="{{ old('trainer_code') }}" maxlength="20" required>
                     </div>
                 </div>
 

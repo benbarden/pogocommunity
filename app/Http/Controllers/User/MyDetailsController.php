@@ -16,8 +16,8 @@ class MyDetailsController extends Controller
      * @var array
      */
     private $validationRules = [
-        'name' => 'required',
-        'email' => 'required',
+        'name' => ['required', 'string', 'max:30'],
+        'email' => ['required', 'string', 'email', 'max:255'],
     ];
 
     public function show()
