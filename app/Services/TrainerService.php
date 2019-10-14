@@ -46,6 +46,6 @@ class TrainerService
 
     public function getTeamCounts()
     {
-        return DB::select('SELECT trainer_team, count(*) as count FROM trainers GROUP BY trainer_team');
+        return DB::select('SELECT trainer_team, count(*) as count FROM trainers WHERE status = ? GROUP BY trainer_team', [Trainer::STATUS_APPROVED]);
     }
 }
