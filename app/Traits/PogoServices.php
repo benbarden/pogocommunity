@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Services\PokemonService;
 use App\Services\TrainerService;
 use App\Services\UserService;
 
@@ -58,6 +59,14 @@ trait PogoServices
     }
 
     // ** Get specific classes ** //
+
+    /**
+     * @return PokemonService
+     */
+    public function getServicePokemon()
+    {
+        return $this->loadService('PokemonService');
+    }
 
     /**
      * @return UserService

@@ -1,0 +1,101 @@
+
+{% include 'common/form-errors.twig' %}
+<form class="form-horizontal" role="form" method="post" action="{{ formSubmitAction }}">
+    {{ csrf_field() }}
+
+    <div class="form-group">
+        <label for="pokemon_no" class="col-md-4 control-label">Pokemon number</label>
+        <div class="col-md-6">
+            <input id="pokemon_no" type="text" class="form-control" name="pokemon_no" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pokemon_name" class="col-md-4 control-label">Pokemon name</label>
+        <div class="col-md-6">
+            <input id="pokemon_name" type="text" class="form-control" name="pokemon_name" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="generation" class="col-md-4 control-label">Generation</label>
+        <div class="col-md-6">
+            <input id="generation" type="text" class="form-control" name="generation" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="buddy_distance" class="col-md-4 control-label">Buddy distance</label>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input id="buddy_distance" type="text" class="form-control" name="buddy_distance">
+                <div class="input-group-append">
+                    <span class="input-group-text">km</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input id="is_available" class="checkbox" name="is_available" type="checkbox">
+                    Available in game
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input id="has_shiny" class="checkbox" name="has_shiny" type="checkbox">
+                    Shiny available
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input id="is_regional" class="checkbox" name="is_regional" type="checkbox">
+                    Regional
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input id="is_legendary" class="checkbox" name="is_legendary" type="checkbox">
+                    Legendary
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input id="is_mythical" class="checkbox" name="is_mythical" type="checkbox">
+                    Mythical
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8 col-md-offset-4">
+            <button type="submit" class="btn outline btn-primary">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>

@@ -80,7 +80,19 @@ Route::group(['middleware' => ['auth.staff']], function() {
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
 
     // Pokedex management
-    Route::get('/staff/pokedex', 'Staff\PokedexController@dashboard')->name('staff.pokedex.dashboard')
+    Route::get('/staff/pokedex/pokemon/list', 'Staff\PokedexController@showList')->name('staff.pokedex.pokemon.list')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
+
+    Route::get('/staff/pokedex/pokemon/add', 'Staff\PokedexController@addPokemon')->name('staff.pokedex.pokemon.add')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
+
+    Route::post('/staff/pokedex/pokemon/add', 'Staff\PokedexController@addPokemon')->name('staff.pokedex.pokemon.add')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
+
+    Route::get('/staff/pokedex/pokemon/edit/{pokemonNo}', 'Staff\PokedexController@editPokemon')->name('staff.pokedex.pokemon.edit')
+        ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
+
+    Route::post('/staff/pokedex/pokemon/edit/{pokemonNo}', 'Staff\PokedexController@editPokemon')->name('staff.pokedex.pokemon.edit')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
 
 });

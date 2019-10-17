@@ -48,6 +48,18 @@
                     </li>
                 </ul>
                 {% endif %}
+                {% if auth_user().hasRole('Pokedex manager') %}
+                <h2>
+                    Pokedex
+                </h2>
+                <ul>
+                    <li>
+                        <a href="{{ route('staff.pokedex.pokemon.list') }}">
+                            Pokedex list
+                        </a>
+                    </li>
+                </ul>
+                {% endif %}
 
             </div>
 

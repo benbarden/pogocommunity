@@ -1,0 +1,66 @@
+<script>
+
+    var formMode = '{{ FormMode }}';
+    var formVals = [];
+
+    if (formMode == 'edit') {
+
+        // This is used when editing existing records.
+        formVals['pokemon_no'] = "{{ PokemonData.pokemon_no }}";
+        formVals['pokemon_name'] = "{{ PokemonData.pokemon_name|e('js') }}";
+        formVals['generation'] = "{{ PokemonData.generation }}";
+        formVals['is_available'] = "{{ PokemonData.is_available }}";
+        formVals['is_regional'] = "{{ PokemonData.is_regional }}";
+        formVals['is_legendary'] = "{{ PokemonData.is_legendary }}";
+        formVals['is_mythical'] = "{{ PokemonData.is_mythical }}";
+        formVals['buddy_distance'] = "{{ PokemonData.buddy_distance }}";
+        formVals['has_shiny'] = "{{ PokemonData.has_shiny }}";
+
+    } else {
+
+        // This is used for new records.
+        // It's also used when submitting the edit version, to avoid the DB data overwriting the form.
+        formVals['pokemon_no'] = "{{ old('pokemon_no') }}";
+        formVals['pokemon_name'] = "{{ old('pokemon_name') }}";
+        formVals['generation'] = "{{ old('generation') }}";
+        formVals['is_available'] = "{{ old('is_available') }}";
+        formVals['is_regional'] = "{{ old('is_regional') }}";
+        formVals['is_legendary'] = "{{ old('is_legendary') }}";
+        formVals['buddy_distance'] = "{{ old('buddy_distance') }}";
+        formVals['has_shiny'] = "{{ old('has_shiny') }}";
+
+    }
+
+    $('#pokemon_no').val(formVals['pokemon_no']);
+    $('#pokemon_name').val(formVals['pokemon_name']);
+    $('#generation').val(formVals['generation']);
+    if (formVals['is_available'] == '1') {
+        $('#is_available').attr('checked', true);
+    } else {
+        $('#is_available').attr('checked', false);
+    }
+    if (formVals['is_regional'] == '1') {
+        $('#is_regional').attr('checked', true);
+    } else {
+        $('#is_regional').attr('checked', false);
+    }
+    if (formVals['is_legendary'] == '1') {
+        $('#is_legendary').attr('checked', true);
+    } else {
+        $('#is_legendary').attr('checked', false);
+    }
+    if (formVals['is_mythical'] == '1') {
+        $('#is_mythical').attr('checked', true);
+    } else {
+        $('#is_mythical').attr('checked', false);
+    }
+    $('#buddy_distance').val(formVals['buddy_distance']);
+    if (formVals['has_shiny'] == '1') {
+        $('#has_shiny').attr('checked', true);
+    } else {
+        $('#has_shiny').attr('checked', false);
+    }
+
+    $('#pokemon_no').focus();
+
+</script>
