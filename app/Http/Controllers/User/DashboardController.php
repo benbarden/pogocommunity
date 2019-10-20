@@ -42,6 +42,8 @@ class DashboardController extends Controller
         }
         $bindings['TeamCounts'] = $teamCounts;
 
+        $bindings['PokedexStats'] = $this->getServicePokemon()->getQuickStats();
+
         return view('user.dashboard', $bindings);
     }
 }

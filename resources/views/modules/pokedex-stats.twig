@@ -1,0 +1,28 @@
+{% if PokedexStats %}
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th class="text-center">Gen</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">In game</th>
+                <th class="text-center">Regional</th>
+                <th class="text-center">Legendary</th>
+                <th class="text-center">Mythical</th>
+                <th class="text-center">Shiny</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in PokedexStats %}
+                <tr>
+                    <td class="text-center">{{ item.generation }}</td>
+                    <td class="text-center">{{ item.sum_total }}</td>
+                    <td class="text-center">{{ item.sum_available }}</td>
+                    <td class="text-center">{{ item.sum_regional }}</td>
+                    <td class="text-center">{{ item.sum_legendary }}</td>
+                    <td class="text-center">{{ item.sum_mythical }}</td>
+                    <td class="text-center">{{ item.sum_shiny }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

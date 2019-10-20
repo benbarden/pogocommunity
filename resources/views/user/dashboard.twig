@@ -8,51 +8,63 @@
 
     <h1 class="mt-5">{{ PageTitle }}</h1>
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4">
 
-                <h2>
-                    Welcome, {{ AuthUser.name }}!
-                </h2>
-                {% if AuthUser.isApproved() %}
-                    <ul>
-                        <li><a href="{{ route('user.my-details.show') }}">My details</a></li>
-                        <li><a href="{{ route('user.my-trainers.show') }}">My trainers</a></li>
-                    </ul>
-                {% elseif AuthUser.isPending() %}
-                    <p>
-                        <strong>Your account is currently awaiting approval</strong>.
-                        Please come back soon!
-                    </p>
-                {% endif %}
-
-            </div>
-
-            <div class="col-12 col-md-4">
-
-                {% if AuthUser.isApproved() %}
-                    <h2>
-                        Trainer codes and members
-                    </h2>
-                    <ul>
-                        <li><a href="{{ route('user.trainers') }}">Trainer list</a></li>
-                        <li><a href="{{ route('user.members') }}">Member list</a></li>
-                    </ul>
-                {% endif %}
-
-            </div>
-
-            <div class="col-12 col-md-4">
-
-                <h2>
-                    Trainer split
-                </h2>
-                <canvas id="teamSplit"></canvas>
-
-            </div>
+            <h2>
+                Welcome, {{ AuthUser.name }}!
+            </h2>
+            {% if AuthUser.isApproved() %}
+                <ul>
+                    <li><a href="{{ route('user.my-details.show') }}">My details</a></li>
+                    <li><a href="{{ route('user.my-trainers.show') }}">My trainers</a></li>
+                </ul>
+            {% elseif AuthUser.isPending() %}
+                <p>
+                    <strong>Your account is currently awaiting approval</strong>.
+                    Please come back soon!
+                </p>
+            {% endif %}
 
         </div>
+
+        <div class="col-12 col-md-4">
+
+            {% if AuthUser.isApproved() %}
+                <h2>
+                    Trainer codes and members
+                </h2>
+                <ul>
+                    <li><a href="{{ route('user.trainers') }}">Trainer list</a></li>
+                    <li><a href="{{ route('user.members') }}">Member list</a></li>
+                </ul>
+            {% endif %}
+
+        </div>
+
+        <div class="col-12 col-md-4">
+
+            <h2>
+                Trainer split
+            </h2>
+            <canvas id="teamSplit"></canvas>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 col-md-12">
+
+            <h2>Pokedex</h2>
+
+            {% include 'modules/pokedex-stats.twig' with {'PokedexStats': PokedexStats} %}
+
+        </div>
+
+    </div>
 
 </div>
 
