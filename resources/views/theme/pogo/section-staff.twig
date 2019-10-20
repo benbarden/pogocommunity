@@ -1,0 +1,29 @@
+{% extends 'theme/pogo/base.twig' %}
+
+{% block page_body %}
+
+    {% if crumbNav is defined %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('staff.dashboard') }}">Staff dashboard</a></li>
+                {% for item in crumbNav %}
+                    {% if loop.last %}
+                        {% set crumbClass = ' active' %}
+                    {% else %}
+                        {% set crumbClass = '' %}
+                    {% endif %}
+                    {% if item.url %}
+                        <li class="breadcrumb-item{{ crumbClass|raw }}"><a href="{{ item.url }}">{{ item.text }}</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item{{ crumbClass|raw }}">{{ item.text }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    {% endif %}
+
+<div class="container-fluid">
+    {% block page_inner %}{% endblock page_inner %}
+</div>
+
+{% endblock page_body %}

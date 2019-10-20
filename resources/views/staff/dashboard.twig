@@ -1,79 +1,73 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-staff.twig' %}
 
-{% set hideHeader = true %}
+{% block page_inner %}
 
-{% block page_body %}
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-<div class="container-fluid">
+<div class="row">
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+    <div class="col-12 col-md-4">
 
-        <div class="row">
+        <h2>
+            Hi, {{ AuthUser.name }}!
+        </h2>
+        <p>
+            It's the Staff zone!
+        </p>
 
-            <div class="col-12 col-md-4">
+    </div>
 
-                <h2>
-                    Hi, {{ AuthUser.name }}!
-                </h2>
-                <p>
-                    It's the Staff zone!
-                </p>
+    <div class="col-12 col-md-4">
 
-            </div>
+        {% if auth_user().hasRole('User manager') %}
+        <h2>
+            User management
+        </h2>
+        <ul>
+            <li>
+                <a href="{{ route('staff.user.list') }}">
+                    User list
+                    {% if staffPendingUserCount > 0 %}
+                    <span class="badge badge-light">{{ staffPendingUserCount }} pending</span>
+                    <span class="sr-only">awaiting approval</span>
+                    {% endif %}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('staff.trainer.list') }}">
+                    Trainer list
+                    {% if staffPendingTrainerCount > 0 %}
+                    <span class="badge badge-light">{{ staffPendingTrainerCount }} pending</span>
+                    <span class="sr-only">awaiting approval</span>
+                    {% endif %}
+                </a>
+            </li>
+        </ul>
+        {% endif %}
+        {% if auth_user().hasRole('Pokedex manager') %}
+        <h2>
+            Pokedex
+        </h2>
+        <ul>
+            <li>
+                <a href="{{ route('staff.pokedex.pokemon.list') }}">
+                    Pokemon list
+                </a>
+            </li>
+        </ul>
+        {% endif %}
 
-            <div class="col-12 col-md-4">
+    </div>
 
-                {% if auth_user().hasRole('User manager') %}
-                <h2>
-                    User management
-                </h2>
-                <ul>
-                    <li>
-                        <a href="{{ route('staff.user.list') }}">
-                            User list
-                            {% if staffPendingUserCount > 0 %}
-                            <span class="badge badge-light">{{ staffPendingUserCount }} pending</span>
-                            <span class="sr-only">awaiting approval</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('staff.trainer.list') }}">
-                            Trainer list
-                            {% if staffPendingTrainerCount > 0 %}
-                            <span class="badge badge-light">{{ staffPendingTrainerCount }} pending</span>
-                            <span class="sr-only">awaiting approval</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                </ul>
-                {% endif %}
-                {% if auth_user().hasRole('Pokedex manager') %}
-                <h2>
-                    Pokedex
-                </h2>
-                <ul>
-                    <li>
-                        <a href="{{ route('staff.pokedex.pokemon.list') }}">
-                            Pokedex list
-                        </a>
-                    </li>
-                </ul>
-                {% endif %}
+    <div class="col-12 col-md-4">
 
-            </div>
+        <h2>
+        </h2>
+        <p>
+        </p>
 
-            <div class="col-12 col-md-4">
-
-                <h2>
-                </h2>
-                <p>
-                </p>
-
-            </div>
-
-        </div>
+    </div>
 
 </div>
 
-{% endblock page_body %}
+{% endblock page_inner %}
