@@ -29,7 +29,7 @@
                     </p>
                 {% else %}
                     <p>
-                        As this is a private community, we ask that you
+                        <strong>This is a private community</strong>. As an approved member, we ask that you
                         don't share anything from the site with others.
                     </p>
                 {% endif %}
@@ -77,6 +77,7 @@
                 {% if auth_user().isApproved() %}
                     <h2>Changelog</h2>
                     <ul>
+                        <li>20th Oct: First version of Pokedex added</li>
                         <li>14th Oct: Site launched!</li>
                         {#
                         <li>11th Oct: Add/edit trainers</li>
