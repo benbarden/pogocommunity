@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'trainer_name' => ['required', 'string', 'max:30'],
-            'trainer_code' => ['required', 'string', 'max:30', 'unique:trainers'],
+            'trainer_code' => ['nullable', 'string', 'max:30', 'unique:trainers'],
             'trainer_team' => ['required', 'string', 'max:20'],
         ]);
     }

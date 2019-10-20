@@ -18,7 +18,7 @@ class MyTrainersController extends Controller
      */
     private $validationRules = [
         'trainer_name' => ['required', 'string', 'max:30'],
-        'trainer_code' => ['required', 'string', 'max:30'],
+        'trainer_code' => ['nullable', 'string', 'max:30'],
         'trainer_team' => ['required', 'string', 'max:20'],
     ];
 

@@ -64,6 +64,11 @@
                     If you have multiple accounts, you can add them later.
                 </p>
                 <p>
+                    If you prefer to keep your trainer code private, you can leave it blank.
+                    Do still add your trainer name and team though. We have a funky pie chart
+                    that shows how many people are in each team :)
+                </p>
+                <p>
                     Please do not add accounts owned by friends, partners etc.
                     <br>
                     They need to register for the website and add their own details.
@@ -79,9 +84,10 @@
 
                 <div class="form-group">
                     <label for="trainer_code" class="col-md-4 control-label">Trainer code</label>
+                    <small>optional</small>
 
                     <div class="col-md-6">
-                        <input id="trainer_code" type="text" class="form-control" name="trainer_code" value="{{ old('trainer_code') }}" maxlength="20" required>
+                        <input id="trainer_code" type="text" class="form-control" name="trainer_code" value="{{ old('trainer_code') }}" maxlength="20">
                     </div>
                 </div>
 

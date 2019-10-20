@@ -23,7 +23,7 @@ class TrainerController extends Controller
      */
     private $validationRules = [
         'trainer_name' => 'required',
-        'trainer_code' => 'required',
+        //'trainer_code' => 'required',
         'trainer_team' => 'required',
         'status' => 'required',
     ];

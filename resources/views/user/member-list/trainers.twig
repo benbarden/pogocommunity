@@ -54,6 +54,7 @@
 {% endblock page_inner %}
 
 {% block page_scripts %}
+{% include 'common/table-sorting.twig' %}
 <script>
     $(document).ready(function() {
         $('.data-sortable').DataTable({

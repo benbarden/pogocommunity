@@ -80,13 +80,13 @@
 {% endblock page_inner %}
 
 {% block page_scripts %}
+{% include 'common/table-sorting.twig' %}
 <script>
     $(document).ready(function() {
         $('.data-sortable').DataTable({
             "order": [0, 'desc'],
             "pageLength": 25,
             "columns": [
-                null,
                 null,
                 null,
                 null,
