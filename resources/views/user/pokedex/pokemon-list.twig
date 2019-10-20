@@ -1,0 +1,125 @@
+<div class="row">
+
+    <div class="col">
+
+        {% if PokemonList.count > 0 %}
+        <table class="table data-sortable">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Name</th>
+                <th class="text-center">Gen</th>
+                <th class="text-center">Buddy distance</th>
+                <th class="text-center">Available</th>
+                <th class="text-center">Shiny</th>
+                <th class="text-center">Regional</th>
+                <th class="text-center">Legendary</th>
+                <th class="text-center">Mythical</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in PokemonList %}
+                <tr>
+                    <td class="text-center">
+                        {{ item.pokemon_no }}
+                    </td>
+                    <td>
+                        {{ item.pokemon_name }}
+                    </td>
+                    <td class="text-center">
+                        {{ item.generation }}
+                    </td>
+                    <td class="text-center">
+                        {% if item.buddy_distance %}
+                        {{ item.buddy_distance }}km
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if item.is_available %}
+                            <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        {% else %}
+                            <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if item.has_shiny %}
+                            <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        {% else %}
+                            <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if item.is_regional %}
+                            <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        {% else %}
+                            <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if item.is_legendary %}
+                            <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        {% else %}
+                            <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        {% if item.is_mythical %}
+                            <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        {% else %}
+                            <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p>No Pokemon found!</p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% include 'common/table-sorting.twig' %}
+
+<script>
+    $(document).ready(function() {
+        $('.data-sortable').DataTable({
+            "order": [0, 'asc'],
+            "pageLength": 25,
+            "columns": [
+                null,
+                null,
+                { "orderable": false },
+                null,
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false },
+                { "orderable": false }
+            ]
+        });
+    });
+</script>

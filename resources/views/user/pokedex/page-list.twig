@@ -1,0 +1,13 @@
+{% extends 'theme/pogo/base.twig' %}
+
+{% block page_body %}
+
+<div class="container-fluid">
+
+    <h1 class="mt-5">{{ PageTitle }}</h1>
+
+    {% include 'user/pokedex/pokemon-list.twig' with {'PokemonList': PokemonList} %}
+
+</div>
+
+{% endblock page_body %}

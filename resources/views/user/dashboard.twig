@@ -56,11 +56,23 @@
 
     <div class="row">
 
-        <div class="col-12 col-md-12">
+        <div class="col-12 col-md-8">
 
-            <h2>Pokedex</h2>
+            <h2>Pokedex stats</h2>
 
             {% include 'modules/pokedex-stats.twig' with {'PokedexStats': PokedexStats} %}
+
+        </div>
+
+        <div class="col-12 col-md-4">
+
+            <h2>Pokedex lists</h2>
+
+            <ul>
+                <li><a href="{{ route('user.pokedex.shinies') }}">All shinies</a></li>
+                <li><a href="{{ route('user.pokedex.regionals') }}">All regionals</a></li>
+                <li><a href="{{ route('user.pokedex.legendaries-mythicals') }}">All legendaries and mythicals</a></li>
+            </ul>
 
         </div>
 

@@ -51,6 +51,13 @@ Route::group(['middleware' => ['auth.approved']], function() {
     // Maps
     Route::get('/user/maps/pokestops', 'User\MapsController@showPokestops')->name('user.maps.pokestops');
 
+    // Pokedex
+    Route::get('/user/pokedex/generation/{genId}', 'User\PokedexController@showGenLanding')->name('user.pokedex.gen-landing');
+    Route::get('/user/pokedex/gen-list/{genId}', 'User\PokedexController@showGenList')->name('user.pokedex.gen-list');
+    Route::get('/user/pokedex/shinies', 'User\PokedexController@showShinies')->name('user.pokedex.shinies');
+    Route::get('/user/pokedex/regionals', 'User\PokedexController@showRegionals')->name('user.pokedex.regionals');
+    Route::get('/user/pokedex/legendaries-mythicals', 'User\PokedexController@showLegendariesMythicals')->name('user.pokedex.legendaries-mythicals');
+
 });
 
 // Staff

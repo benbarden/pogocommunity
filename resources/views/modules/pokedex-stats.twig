@@ -9,18 +9,28 @@
                 <th class="text-center">Legendary</th>
                 <th class="text-center">Mythical</th>
                 <th class="text-center">Shiny</th>
+                <th class="text-center"></th>
             </tr>
         </thead>
         <tbody>
             {% for item in PokedexStats %}
                 <tr>
-                    <td class="text-center">{{ item.generation }}</td>
+                    <td class="text-center">
+                        {{ item.generation }}
+                    </td>
                     <td class="text-center">{{ item.sum_total }}</td>
                     <td class="text-center">{{ item.sum_available }}</td>
                     <td class="text-center">{{ item.sum_regional }}</td>
                     <td class="text-center">{{ item.sum_legendary }}</td>
                     <td class="text-center">{{ item.sum_mythical }}</td>
                     <td class="text-center">{{ item.sum_shiny }}</td>
+                    <td class="text-center">
+                        {% if item.generation != 8 %}
+                            <a href="{{ route('user.pokedex.gen-landing', {'genId': item.generation}) }}">
+                                View Gen {{ item.generation }} details
+                            </a>
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
