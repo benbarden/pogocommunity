@@ -24,6 +24,8 @@ h4, .h4 {font-size: 20px;}
 h5, .h5 {font-size: 16px;}
 h6, .h6 {font-size: 14px;}
 
+h1.mt-5 {margin-top: 20px !important;}
+
 .breadcrumb {
     font-family: 'Fira Sans', sans-serif;
     font-size: 12px;

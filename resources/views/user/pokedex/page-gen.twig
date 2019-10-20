@@ -1,58 +1,56 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% block page_body %}
+{% set crumbNav = [{'text': PageTitle}] %}
 
-<div class="container-fluid">
+{% block page_inner %}
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-12 col-md-12">
+    <div class="col-12 col-md-12">
 
-            <p>
-                Gen {{ GenId }} has a total of {{ PokemonList|length }} Pokemon.
-                <a href="{{ route('user.pokedex.gen-list', {'genId': GenId}) }}">View full list</a>.
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-12 col-md-4">
-
-            <h2>Shinies</h2>
-            <p>
-                Gen {{ GenId }} has {{ ShinyList|length }} shinies.
-            </p>
-            {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': ShinyList} %}
-
-        </div>
-
-        <div class="col-12 col-md-4">
-
-            <h2>Regionals</h2>
-            <p>
-                Gen {{ GenId }} has {{ RegionalList|length }} regionals.
-            </p>
-            {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': RegionalList} %}
-
-        </div>
-
-        <div class="col-12 col-md-4">
-
-            <h2>Legendaries and Mythicals</h2>
-            <p>
-                Gen {{ GenId }} has {{ LegendaryMythicalList|length }} legendaries / mythicals.
-            </p>
-            {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': LegendaryMythicalList} %}
-
-        </div>
+        <p>
+            Gen {{ GenId }} has a total of {{ PokemonList|length }} Pokemon.
+            <a href="{{ route('user.pokedex.gen-list', {'genId': GenId}) }}">View full list</a>.
+        </p>
 
     </div>
 
 </div>
 
-{% endblock page_body %}
+<div class="row">
+
+    <div class="col-12 col-md-4">
+
+        <h2>Shinies</h2>
+        <p>
+            Gen {{ GenId }} has {{ ShinyList|length }} shinies.
+        </p>
+        {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': ShinyList} %}
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+        <h2>Regionals</h2>
+        <p>
+            Gen {{ GenId }} has {{ RegionalList|length }} regionals.
+        </p>
+        {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': RegionalList} %}
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+        <h2>Legendaries and Mythicals</h2>
+        <p>
+            Gen {{ GenId }} has {{ LegendaryMythicalList|length }} legendaries / mythicals.
+        </p>
+        {% include 'user/pokedex/pokemon-quick-list.twig' with {'PokemonList': LegendaryMythicalList} %}
+
+    </div>
+
+</div>
+
+{% endblock page_inner %}

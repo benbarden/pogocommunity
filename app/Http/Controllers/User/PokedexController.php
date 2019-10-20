@@ -42,8 +42,8 @@ class PokedexController extends Controller
 
         $bindings = [];
 
-        $bindings['TopTitle'] = 'Pokedex: Gen '.$genId.' - Full list';
-        $bindings['PageTitle'] = 'Pokedex: Gen '.$genId.' - Full list';
+        $bindings['TopTitle'] = 'Gen '.$genId.' - Full list';
+        $bindings['PageTitle'] = 'Gen '.$genId.' - Full list';
         $bindings['GenId'] = $genId;
 
         $bindings['PokemonList'] = $this->getServicePokemon()->getByGeneration($genId);

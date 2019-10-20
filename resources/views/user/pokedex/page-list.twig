@@ -1,13 +1,15 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% block page_body %}
+{% if GenId %}
+    {% set crumbNav = [{'url': route('user.pokedex.gen-landing', {'genId': GenId}), 'text': 'Pokedex: Gen '~GenId}, {'text': PageTitle}] %}
+{% else %}
+    {% set crumbNav = [{'text': PageTitle}] %}
+{% endif %}
 
-<div class="container-fluid">
+{% block page_inner %}
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    {% include 'user/pokedex/pokemon-list.twig' with {'PokemonList': PokemonList} %}
+{% include 'user/pokedex/pokemon-list.twig' with {'PokemonList': PokemonList} %}
 
-</div>
-
-{% endblock page_body %}
+{% endblock page_inner %}

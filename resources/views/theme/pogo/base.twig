@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="{{ asset('css/sticky-footer-navbar.css') }}?v=201900916" rel="stylesheet">
+    <link href="{{ asset('css/sticky-footer-navbar.css') }}?v=201901020" rel="stylesheet">
 
     <!-- Site theme -->
-    <link href="{{ asset('css/pogocomm-theme.css') }}?v=20190916" rel="stylesheet">
+    <link href="{{ asset('css/pogocomm-theme.css') }}?v=20191020" rel="stylesheet">
 
     <!-- ChartJS -->
     <link href="{{ asset('css/Chart.min.css') }}" rel="stylesheet">
@@ -56,8 +56,7 @@
 
 <!-- Begin page content -->
 <main role="main" class="container">
-    {% block page_body %}
-    {% endblock page_body %}
+    {% block page_body %}{% endblock page_body %}
 </main>
 
 <footer class="footer">
@@ -73,6 +72,8 @@
 #}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% block page_scripts %}{% endblock page_scripts %}
 
 </body>
 <!-- {{ siteEnv }} -->

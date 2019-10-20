@@ -1,63 +1,59 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% set hideHeader = true %}
+{% set crumbNav = [{'text': PageTitle}] %}
 
-{% block page_body %}
+{% block page_inner %}
 
-<div class="container-fluid">
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<div class="row">
 
-        <div class="row">
+    <div class="col">
 
-            <div class="col">
+        <a class="btn btn-primary" href="{{ route('user.my-details.edit') }}" role="button">Edit my details</a>
 
-                <a class="btn btn-primary" href="{{ route('user.my-details.edit') }}" role="button">Edit my details</a>
+        <hr>
 
-                <hr>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col" style="width: 20%;">Field</th>
+                <th scope="col" style="width: 50%;">Value</th>
+                <th scope="col" style="width: 30%;">Privacy - who can see this?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Name</td>
+                <td>
+                    {% if UserData.isStaff() %}
+                        <span class="badge badge-info">Staff</span>
+                    {% endif %}
+                    {{ UserData.name }}
+                </td>
+                <td>
+                    Approved members
+                </td>
+            </tr>
+            <tr>
+                <td>Joined</td>
+                <td>{{ UserData.created_at|date('Y-m-d') }}</td>
+                <td>
+                    Approved members
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ UserData.email }}</td>
+                <td>
+                    Admin only
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col" style="width: 20%;">Field</th>
-                        <th scope="col" style="width: 50%;">Value</th>
-                        <th scope="col" style="width: 30%;">Privacy - who can see this?</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            {% if UserData.isStaff() %}
-                                <span class="badge badge-info">Staff</span>
-                            {% endif %}
-                            {{ UserData.name }}
-                        </td>
-                        <td>
-                            Approved members
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Joined</td>
-                        <td>{{ UserData.created_at|date('Y-m-d') }}</td>
-                        <td>
-                            Approved members
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>{{ UserData.email }}</td>
-                        <td>
-                            Admin only
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
-        </div>
+    </div>
 
 </div>
 
-{% endblock page_body %}
+{% endblock page_inner %}

@@ -1,115 +1,111 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% set hideHeader = true %}
+{% block page_inner %}
 
-{% block page_body %}
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-<div class="container-fluid">
+<div class="row">
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+    <div class="col-12 col-md-4">
 
-    <div class="row">
-
-        <div class="col-12 col-md-4">
-
-            <h2>
-                Welcome, {{ AuthUser.name }}!
-            </h2>
-            {% if AuthUser.isApproved() %}
-                <ul>
-                    <li><a href="{{ route('user.my-details.show') }}">My details</a></li>
-                    <li><a href="{{ route('user.my-trainers.show') }}">My trainers</a></li>
-                </ul>
-            {% elseif AuthUser.isPending() %}
-                <p>
-                    <strong>Your account is currently awaiting approval</strong>.
-                    Please come back soon!
-                </p>
-            {% endif %}
-
-        </div>
-
-        <div class="col-12 col-md-4">
-
-            {% if AuthUser.isApproved() %}
-                <h2>
-                    Trainer codes and members
-                </h2>
-                <ul>
-                    <li><a href="{{ route('user.trainers') }}">Trainer list</a></li>
-                    <li><a href="{{ route('user.members') }}">Member list</a></li>
-                </ul>
-            {% endif %}
-
-        </div>
-
-        <div class="col-12 col-md-4">
-
-            <h2>
-                Trainer split
-            </h2>
-            <canvas id="teamSplit"></canvas>
-
-        </div>
+        <h2>
+            Welcome, {{ AuthUser.name }}!
+        </h2>
+        {% if AuthUser.isApproved() %}
+            <ul>
+                <li><a href="{{ route('user.my-details.show') }}">My details</a></li>
+                <li><a href="{{ route('user.my-trainers.show') }}">My trainers</a></li>
+            </ul>
+        {% elseif AuthUser.isPending() %}
+            <p>
+                <strong>Your account is currently awaiting approval</strong>.
+                Please come back soon!
+            </p>
+        {% endif %}
 
     </div>
 
-    <div class="row">
+    <div class="col-12 col-md-4">
 
-        <div class="col-12 col-md-8">
-
-            <h2>Pokedex stats</h2>
-
-            {% include 'modules/pokedex-stats.twig' with {'PokedexStats': PokedexStats} %}
-
-        </div>
-
-        <div class="col-12 col-md-4">
-
-            <h2>Pokedex lists</h2>
-
+        {% if AuthUser.isApproved() %}
+            <h2>
+                Trainer codes and members
+            </h2>
             <ul>
-                <li><a href="{{ route('user.pokedex.shinies') }}">All shinies</a></li>
-                <li><a href="{{ route('user.pokedex.regionals') }}">All regionals</a></li>
-                <li><a href="{{ route('user.pokedex.legendaries-mythicals') }}">All legendaries and mythicals</a></li>
+                <li><a href="{{ route('user.trainers') }}">Trainer list</a></li>
+                <li><a href="{{ route('user.members') }}">Member list</a></li>
             </ul>
+        {% endif %}
 
-        </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+
+        <h2>
+            Trainer split
+        </h2>
+        <canvas id="teamSplit"></canvas>
 
     </div>
 
 </div>
 
+<div class="row">
+
+    <div class="col-12 col-md-8">
+
+        <h2>Pokedex stats</h2>
+
+        {% include 'modules/pokedex-stats.twig' with {'PokedexStats': PokedexStats} %}
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+        <h2>Pokedex lists</h2>
+
+        <ul>
+            <li><a href="{{ route('user.pokedex.shinies') }}">All shinies</a></li>
+            <li><a href="{{ route('user.pokedex.regionals') }}">All regionals</a></li>
+            <li><a href="{{ route('user.pokedex.legendaries-mythicals') }}">All legendaries and mythicals</a></li>
+        </ul>
+
+    </div>
+
+</div>
+
+{% endblock page_inner %}
+
 {% if AuthUser.isApproved() %}
-<script>
-    var ctx = document.getElementById('teamSplit').getContext('2d');
-    var pieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: [
-                    {% for item in TeamCounts %}
-                    {{ item.count }}
-                    {% if not loop.last %},{% endif %}
-                    {% endfor %}
-                ],
-                backgroundColor: [
-                    {% for item in TeamCounts %}
-                    '{{ item.colour }}'
-                    {% if not loop.last %},{% endif %}
-                    {% endfor %}
-                ]
-            }],
-            labels: [
-                {% for item in TeamCounts %}
-                '{{ item.trainer_team }}'
-                {% if not loop.last %},{% endif %}
-                {% endfor %}
-            ]
-        }
-    });
+    {% block page_scripts %}
+        <script>
+            var ctx = document.getElementById('teamSplit').getContext('2d');
+            var pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [
+                            {% for item in TeamCounts %}
+                            {{ item.count }}
+                            {% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ],
+                        backgroundColor: [
+                            {% for item in TeamCounts %}
+                            '{{ item.colour }}'
+                            {% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ]
+                    }],
+                    labels: [
+                        {% for item in TeamCounts %}
+                        '{{ item.trainer_team }}'
+                        {% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }
+            });
 
-</script>
+        </script>
+    {% endblock page_scripts %}
 {% endif %}
-
-{% endblock page_body %}

@@ -1,50 +1,51 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% block page_body %}
+{% set crumbNav = [{'text': PageTitle}] %}
 
-<div class="container-fluid">
+{% block page_inner %}
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <div class="row">
+<div class="row">
 
-        <div class="col">
+    <div class="col">
 
-            {% if UserList.count > 0 %}
-            <table class="table data-sortable">
-                <thead>
+        {% if UserList.count > 0 %}
+        <table class="table data-sortable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th class="text-center">Joined</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in UserList %}
                 <tr>
-                    <th>Name</th>
-                    <th class="text-center">Joined</th>
+                    <td>
+                        {% if item.isStaff() %}
+                            <span class="badge badge-info">Staff</span>
+                        {% endif %}
+                        <a href="{{ route('user.members.profile', {'memberId': item.id}) }}">{{ item.name }}</a>
+                    </td>
+                    <td class="text-center">
+                        {{ item.created_at|date('Y-m-d') }}
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for item in UserList %}
-                    <tr>
-                        <td>
-                            {% if item.isStaff() %}
-                                <span class="badge badge-info">Staff</span>
-                            {% endif %}
-                            <a href="{{ route('user.members.profile', {'memberId': item.id}) }}">{{ item.name }}</a>
-                        </td>
-                        <td class="text-center">
-                            {{ item.created_at|date('Y-m-d') }}
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            {% endfor %}
+            </tbody>
+        </table>
 
-            {% else %}
-                <p>No users found!</p>
-            {% endif %}
-
-        </div>
+        {% else %}
+            <p>No users found!</p>
+        {% endif %}
 
     </div>
 
 </div>
 
+{% endblock page_inner %}
+
+{% block page_scripts %}
 <script>
     $(document).ready(function() {
         $('.data-sortable').DataTable({
@@ -57,5 +58,4 @@
         });
     });
 </script>
-
-{% endblock page_body %}
+{% endblock page_scripts %}

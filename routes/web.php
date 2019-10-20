@@ -30,14 +30,6 @@ Route::group(['middleware' => ['auth']], function() {
 // Approved members
 Route::group(['middleware' => ['auth.approved']], function() {
 
-    // Index
-    Route::get('/user/trainers', 'User\MemberListController@showTrainers')->name('user.trainers');
-    Route::get('/user/members', 'User\MemberListController@showMembers')->name('user.members');
-
-    // Profiles
-    Route::get('/user/trainers/{trainerId}', 'User\MemberListController@showTrainerProfile')->name('user.trainers.profile');
-    Route::get('/user/members/{memberId}', 'User\MemberListController@showMemberProfile')->name('user.members.profile');
-
     // My details
     Route::get('/user/my-details', 'User\MyDetailsController@show')->name('user.my-details.show');
     Route::get('/user/my-details/edit', 'User\MyDetailsController@edit')->name('user.my-details.edit');
@@ -48,8 +40,13 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
     Route::post('/user/my-trainers/edit/{trainerId}', 'User\MyTrainersController@edit')->name('user.my-trainers.edit');
 
-    // Maps
-    Route::get('/user/maps/pokestops', 'User\MapsController@showPokestops')->name('user.maps.pokestops');
+    // Index
+    Route::get('/user/trainers', 'User\MemberListController@showTrainers')->name('user.trainers');
+    Route::get('/user/members', 'User\MemberListController@showMembers')->name('user.members');
+
+    // Profiles
+    Route::get('/user/trainers/{trainerId}', 'User\MemberListController@showTrainerProfile')->name('user.trainers.profile');
+    Route::get('/user/members/{memberId}', 'User\MemberListController@showMemberProfile')->name('user.members.profile');
 
     // Pokedex
     Route::get('/user/pokedex/generation/{genId}', 'User\PokedexController@showGenLanding')->name('user.pokedex.gen-landing');
@@ -57,6 +54,9 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/pokedex/shinies', 'User\PokedexController@showShinies')->name('user.pokedex.shinies');
     Route::get('/user/pokedex/regionals', 'User\PokedexController@showRegionals')->name('user.pokedex.regionals');
     Route::get('/user/pokedex/legendaries-mythicals', 'User\PokedexController@showLegendariesMythicals')->name('user.pokedex.legendaries-mythicals');
+
+    // Maps (unfinished)
+    Route::get('/user/maps/pokestops', 'User\MapsController@showPokestops')->name('user.maps.pokestops');
 
 });
 

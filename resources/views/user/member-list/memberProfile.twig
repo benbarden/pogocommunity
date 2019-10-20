@@ -1,58 +1,54 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% set hideHeader = true %}
+{% set crumbNav = [{'url': route('user.members'), 'text': 'Member list'}, {'text': PageTitle}] %}
 
-{% block page_body %}
+{% block page_inner %}
 
-<div class="container-fluid">
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<div class="row">
 
-        <div class="row">
+    <div class="col">
 
-            <div class="col">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Name</td>
+                <td>
+                    {% if MemberData.isStaff() %}
+                        <span class="badge badge-info">Staff</span>
+                    {% endif %}
+                    {{ MemberData.name }}
+                </td>
+            </tr>
+            <tr>
+                <td>Joined</td>
+                <td>{{ MemberData.created_at|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <td>Trainers</td>
+                <td>
+                    {% if MemberTrainers.count > 0 %}
+                        {% for item in MemberTrainers %}
+                            <a href="{{ route('user.trainers.profile', {'trainerId': item.id}) }}">{{ item.trainer_name }}</a>
+                            <br>
+                        {% endfor %}
+                    {% else %}
+                        <p>Whoops, this member doesn't have any trainers!</p>
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Field</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            {% if MemberData.isStaff() %}
-                                <span class="badge badge-info">Staff</span>
-                            {% endif %}
-                            {{ MemberData.name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Joined</td>
-                        <td>{{ MemberData.created_at|date('Y-m-d') }}</td>
-                    </tr>
-                    <tr>
-                        <td>Trainers</td>
-                        <td>
-                            {% if MemberTrainers.count > 0 %}
-                                {% for item in MemberTrainers %}
-                                    <a href="{{ route('user.trainers.profile', {'trainerId': item.id}) }}">{{ item.trainer_name }}</a>
-                                    <br>
-                                {% endfor %}
-                            {% else %}
-                                <p>Whoops, this member doesn't have any trainers!</p>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
-        </div>
+    </div>
 
 </div>
 
-{% endblock page_body %}
+{% endblock page_inner %}

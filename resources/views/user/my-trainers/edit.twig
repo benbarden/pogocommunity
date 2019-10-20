@@ -1,22 +1,23 @@
-{% extends 'theme/pogo/base.twig' %}
+{% extends 'theme/pogo/section-members.twig' %}
 
-{% block page_body %}
+{% set crumbNav = [{'url': route('user.my-trainers.show'), 'text': 'My trainers'}, {'text': PageTitle}] %}
+
+{% block page_inner %}
 
 {% set formSubmitAction = route('user.my-trainers.edit', {'trainerId': TrainerId}) %}
-<div class="container-fluid">
 
-    <h1 class="mt-5">{{ PageTitle }}</h1>
+<h1 class="mt-5">{{ PageTitle }}</h1>
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-12">
-            {% include 'user/my-trainers/form.twig' with {'formSubmitAction': formSubmitAction} %}
-        </div>
-
+    <div class="col-12">
+        {% include 'user/my-trainers/form.twig' with {'formSubmitAction': formSubmitAction} %}
     </div>
 
 </div>
 
-{% include 'user/my-trainers/scripts.twig' %}
+{% endblock page_inner %}
 
-{% endblock page_body %}
+{% block page_scripts %}
+    {% include 'user/my-trainers/scripts.twig' %}
+{% endblock page_scripts %}
