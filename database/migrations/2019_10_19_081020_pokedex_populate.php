@@ -574,9 +574,9 @@ class PokedexPopulate extends Migration
         DB::insert($insertSql." VALUES('335', 'Zangoose', 3, 1, 1, 0, 0, 3, 1, NOW(), NOW())");
         DB::insert($insertSql." VALUES('336', 'Seviper', 3, 1, 1, 0, 0, 3, 1, NOW(), NOW())");
         DB::insert($insertSql." VALUES('337', 'Lunatone', 3, 1, 1, 0, 0, 3, 1, NOW(), NOW())");
+        DB::insert($insertSql." VALUES('338', 'Solrock', 3, 1, 1, 0, 0, 3, 1, NOW(), NOW())");
         DB::insert($insertSql." VALUES('357', 'Tropius', 3, 1, 1, 0, 0, 5, 0, NOW(), NOW())");
         DB::insert($insertSql." VALUES('369', 'Relicanth', 3, 1, 1, 0, 0, 5, 0, NOW(), NOW())");
-        DB::insert($insertSql." VALUES('338', 'Solrock', 3, 1, 1, 0, 0, 3, 1, NOW(), NOW())");
         DB::insert($insertSql." VALUES('422', 'Shellos', 4, 1, 1, 0, 0, 3, 0, NOW(), NOW())");
         DB::insert($insertSql." VALUES('511', 'Pansage', 5, 1, 1, 0, 0, 3, 0, NOW(), NOW())");
         DB::insert($insertSql." VALUES('512', 'Simisage', 5, 1, 1, 0, 0, 3, 0, NOW(), NOW())");
