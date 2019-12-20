@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth.staff']], function() {
         ->middleware('check.user.role:'.\App\UserRole::ROLE_USER_MANAGER);
 
     // Pokedex management
-    Route::get('/staff/pokedex/pokemon/list', 'Staff\PokedexController@showList')->name('staff.pokedex.pokemon.list')
+    Route::get('/staff/pokedex/pokemon/list/{filter?}', 'Staff\PokedexController@showList')->name('staff.pokedex.pokemon.list')
         ->middleware('check.user.role:'.\App\UserRole::ROLE_POKEDEX_MANAGER);
 
     Route::get('/staff/pokedex/pokemon/add', 'Staff\PokedexController@addPokemon')->name('staff.pokedex.pokemon.add')

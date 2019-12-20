@@ -4,6 +4,24 @@
 
 {% block page_inner %}
 
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">
+        <label for="staff-pokedex-filter">Filter:</label>
+        <select id="staff-pokedex-filter" name="staff-pokedex-filter" class="form-control">
+            <optgroup label="By generation">
+                <option value="gen-1">Gen 1</option>
+                <option value="gen-2">Gen 2</option>
+                <option value="gen-3">Gen 3</option>
+                <option value="gen-4">Gen 4</option>
+                <option value="gen-5">Gen 5</option>
+            </optgroup>
+        </select>
+    </div>
+</div>
+
+<hr>
+
 <h1 class="mt-5">{{ PageTitle }}</h1>
 
 <div class="row">
@@ -123,9 +141,15 @@
 {% block page_scripts %}
 {% include 'common/table-sorting.twig' %}
 <script>
+    $('#staff-pokedex-filter').on('change', function() {
+        selectedGameFilter = $(this).val();
+        top.location.href = '{{ route('staff.pokedex.pokemon.list')}}' + '/' + selectedGameFilter;
+    });
     $(document).ready(function() {
+        var activeFilter = '{{ ActiveFilter }}';
+        $('#staff-pokedex-filter').val(activeFilter);
         $('.data-sortable').DataTable({
-            "order": [0, 'desc'],
+            "order": [0, 'asc'],
             "pageLength": 25,
             "columns": [
                 null,

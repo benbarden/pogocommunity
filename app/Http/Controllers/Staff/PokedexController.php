@@ -25,18 +25,36 @@ class PokedexController extends Controller
         'pokemon_name' => ['required', 'string', 'max:50', 'unique:pokemon,pokemon_name'],
         'generation' => ['required', 'integer', 'max:8'],
         'buddy_distance' => ['integer', 'max:20', 'nullable'],
-        'sprite_normal' => ['string', 'max:255'],
-        'sprite_shiny' => ['string', 'max:255'],
+        'sprite_normal' => ['string', 'max:255', 'nullable'],
+        'sprite_shiny' => ['string', 'max:255', 'nullable'],
     ];
 
-    public function showList()
+    public function showList($filter = '')
     {
-        $pokemonList = $this->getServicePokemon()->getAll();
-
         $bindings = [];
 
         $bindings['TopTitle'] = 'Pokemon list';
-        $bindings['PageTitle'] = 'Pokemon list';
+
+        switch ($filter) {
+            case 'gen-1':
+            case 'gen-2':
+            case 'gen-3':
+            case 'gen-4':
+            case 'gen-5':
+                $filterData = explode('-', $filter);
+                list($genPrefix, $genId) = $filterData;
+                $pokemonList = $this->getServicePokemon()->getByGeneration($genId);
+                $bindings['Gen'] = $genId;
+                $bindings['ActiveFilter'] = $filter;
+                $bindings['PageTitle'] = 'Pokemon list: Gen '.$genId;
+                break;
+            default:
+                $pokemonList = $this->getServicePokemon()->getByGeneration(1);
+                $bindings['Gen'] = 1;
+                $bindings['ActiveFilter'] = 'gen-1';
+                $bindings['PageTitle'] = 'Pokemon list: Gen 1';
+                break;
+        }
 
         $bindings['PokemonList'] = $pokemonList;
 
@@ -67,7 +85,7 @@ class PokedexController extends Controller
             $pokemon->sprite_shiny = $request->sprite_shiny;
             $pokemon->save();
 
-            return redirect(route('staff.pokedex.pokemon.list'));
+            return redirect(route('staff.pokedex.pokemon.list', ['filter' => 'gen-'.$request->generation]));
 
         }
 
@@ -110,7 +128,7 @@ class PokedexController extends Controller
             $pokemon->sprite_shiny = $request->sprite_shiny;
             $pokemon->save();
 
-            return redirect(route('staff.pokedex.pokemon.list'));
+            return redirect(route('staff.pokedex.pokemon.list', ['filter' => 'gen-'.$request->generation]));
 
         } else {
 
