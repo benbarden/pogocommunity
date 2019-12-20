@@ -37,6 +37,7 @@
             <thead>
             <tr>
                 <th class="text-center">#</th>
+                <th></th>
                 <th>Name</th>
                 <th class="text-center">Gen</th>
                 <th class="text-center">Buddy distance</th>
@@ -53,6 +54,11 @@
                 <tr>
                     <td class="text-center">
                         {{ item.pokemon_no }}
+                    </td>
+                    <td class="text-center">
+                        {% if item.sprite_normal %}
+                            {{ ImageHelper.spriteNormalBuilder(item, '60px') }}
+                        {% endif %}
                     </td>
                     <td>
                         {{ item.pokemon_name }}
@@ -153,6 +159,7 @@
             "pageLength": 25,
             "columns": [
                 null,
+                { "orderable": false },
                 null,
                 { "orderable": false },
                 null,

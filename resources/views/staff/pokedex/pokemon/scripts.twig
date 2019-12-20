@@ -15,6 +15,7 @@
         formVals['is_mythical'] = "{{ PokemonData.is_mythical }}";
         formVals['buddy_distance'] = "{{ PokemonData.buddy_distance }}";
         formVals['has_shiny'] = "{{ PokemonData.has_shiny }}";
+        formVals['image_artwork'] = "{{ PokemonData.image_artwork }}";
         formVals['sprite_normal'] = "{{ PokemonData.sprite_normal }}";
         formVals['sprite_shiny'] = "{{ PokemonData.sprite_shiny }}";
 
@@ -30,6 +31,7 @@
         formVals['is_legendary'] = "{{ old('is_legendary') }}";
         formVals['buddy_distance'] = "{{ old('buddy_distance') }}";
         formVals['has_shiny'] = "{{ old('has_shiny') }}";
+        formVals['image_artwork'] = "{{ old('image_artwork') }}";
         formVals['sprite_normal'] = "{{ old('sprite_normal') }}";
         formVals['sprite_shiny'] = "{{ old('sprite_shiny') }}";
 
@@ -64,6 +66,7 @@
     } else {
         $('#has_shiny').attr('checked', false);
     }
+    $('#image_artwork').val(formVals['image_artwork']);
     $('#sprite_normal').val(formVals['sprite_normal']);
     $('#sprite_shiny').val(formVals['sprite_shiny']);
 

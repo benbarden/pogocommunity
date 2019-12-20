@@ -27,6 +27,7 @@ class PokedexController extends Controller
         'buddy_distance' => ['integer', 'max:20', 'nullable'],
         'sprite_normal' => ['string', 'max:255', 'nullable'],
         'sprite_shiny' => ['string', 'max:255', 'nullable'],
+        'image_artwork' => ['string', 'max:255', 'nullable'],
     ];
 
     public function showList($filter = '')
@@ -83,6 +84,8 @@ class PokedexController extends Controller
             $pokemon->has_shiny = $request->has_shiny == 'on' ? 1 : 0;
             $pokemon->sprite_normal = $request->sprite_normal;
             $pokemon->sprite_shiny = $request->sprite_shiny;
+            $pokemon->image_artwork = $request->image_artwork;
+
             $pokemon->save();
 
             return redirect(route('staff.pokedex.pokemon.list', ['filter' => 'gen-'.$request->generation]));
@@ -126,6 +129,8 @@ class PokedexController extends Controller
             $pokemon->has_shiny = $request->has_shiny == 'on' ? 1 : 0;
             $pokemon->sprite_normal = $request->sprite_normal;
             $pokemon->sprite_shiny = $request->sprite_shiny;
+            $pokemon->image_artwork = $request->image_artwork;
+
             $pokemon->save();
 
             return redirect(route('staff.pokedex.pokemon.list', ['filter' => 'gen-'.$request->generation]));

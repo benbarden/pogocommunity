@@ -3,10 +3,10 @@
     <div class="col">
 
         {% if PokemonList.count > 0 %}
-        <table class="table">
+        <table class="table table-sm">
             <thead>
             <tr>
-                <th class="text-center">#</th>
+                <th class="text-center"></th>
                 <th>Name</th>
                 <th class="text-center">Buddy distance</th>
             </tr>
@@ -15,7 +15,9 @@
             {% for item in PokemonList %}
                 <tr>
                     <td class="text-center">
-                        {{ item.pokemon_no }}
+                        {% if item.sprite_normal %}
+                            {{ ImageHelper.spriteNormalBuilder(item, '40px') }}
+                        {% endif %}
                     </td>
                     <td>
                         <a href="{{ route('user.pokedex.showPokemon', {'pokemonNo': item.pokemon_no}) }}">

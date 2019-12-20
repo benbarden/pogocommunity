@@ -117,6 +117,7 @@
 
     <div class="col-12 col-md-4">
 
+        {#
         {% if Pokemon.sprite_normal %}
         <h2>Normal</h2>
         {{ ImageHelper.spriteNormalBuilder(Pokemon) }}
@@ -126,10 +127,17 @@
         <h2>Shiny</h2>
         {{ ImageHelper.spriteShinyBuilder(Pokemon) }}
         {% endif %}
+        #}
 
     </div>
 
     <div class="col-12 col-md-4">
+
+        {% if Pokemon.image_artwork %}
+            <div class="text-center">
+                {{ ImageHelper.imageArtworkBuilder(Pokemon) }}
+            </div>
+        {% endif %}
 
     </div>
 

@@ -148,7 +148,7 @@ return [
         'facades' => [
             'ImageHelper' => [
                 'is_safe' => [
-                    'spriteNormalBuilder', 'spriteShinyBuilder',
+                    'spriteNormalBuilder', 'spriteShinyBuilder', 'imageArtworkBuilder',
                 ]
             ],
         ],
