@@ -67,7 +67,7 @@ mysql -u root -ppass -e "create user 'pogocomm'@'localhost' identified by 'pass'
 mysql -u root -ppass -e "grant all privileges on pogocomm.* to 'pogocomm'@'localhost';"
 mysql -u root -ppass -e "flush privileges;"
 
-#mysql -u root -ppass pogocomm < /vagrant/db.sql
+mysql -u root -ppass pogocomm < /vagrant/db.sql
 
 # Composer
 cd /home/vagrant/
