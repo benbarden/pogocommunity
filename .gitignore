@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/img/pokedex
 /storage/*.key
 /vendor
 .env

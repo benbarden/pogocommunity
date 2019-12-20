@@ -25,6 +25,8 @@ class PokedexController extends Controller
         'pokemon_name' => ['required', 'string', 'max:50', 'unique:pokemon,pokemon_name'],
         'generation' => ['required', 'integer', 'max:8'],
         'buddy_distance' => ['integer', 'max:20', 'nullable'],
+        'sprite_normal' => ['string', 'max:255'],
+        'sprite_shiny' => ['string', 'max:255'],
     ];
 
     public function showList()
@@ -61,6 +63,8 @@ class PokedexController extends Controller
             $pokemon->is_mythical = $request->is_mythical == 'on' ? 1 : 0;
             $pokemon->buddy_distance = $request->buddy_distance;
             $pokemon->has_shiny = $request->has_shiny == 'on' ? 1 : 0;
+            $pokemon->sprite_normal = $request->sprite_normal;
+            $pokemon->sprite_shiny = $request->sprite_shiny;
             $pokemon->save();
 
             return redirect(route('staff.pokedex.pokemon.list'));
@@ -102,6 +106,8 @@ class PokedexController extends Controller
             $pokemon->is_mythical = $request->is_mythical == 'on' ? 1 : 0;
             $pokemon->buddy_distance = $request->buddy_distance;
             $pokemon->has_shiny = $request->has_shiny == 'on' ? 1 : 0;
+            $pokemon->sprite_normal = $request->sprite_normal;
+            $pokemon->sprite_shiny = $request->sprite_shiny;
             $pokemon->save();
 
             return redirect(route('staff.pokedex.pokemon.list'));

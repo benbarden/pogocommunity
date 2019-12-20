@@ -91,4 +91,19 @@ class PokedexController extends Controller
 
         return view('user.pokedex.page-list', $bindings);
     }
+
+    public function showPokemon($pokemonNo)
+    {
+        $pokemon = $this->getServicePokemon()->getByNo($pokemonNo);
+        if (!$pokemon) abort(404);
+
+        $bindings = [];
+
+        $bindings['TopTitle'] = $pokemon->pokemon_name.': Pokedex';
+        $bindings['PageTitle'] = $pokemon->pokemon_name;
+
+        $bindings['Pokemon'] = $pokemon;
+
+        return view('user.pokedex.showPokemon', $bindings);
+    }
 }

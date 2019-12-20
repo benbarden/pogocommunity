@@ -1,0 +1,138 @@
+{% extends 'theme/pogo/section-members.twig' %}
+
+{% set GenId = Pokemon.generation %}
+{% set crumbNav = [{'url': route('user.pokedex.gen-landing', {'genId': GenId}), 'text': 'Pokedex: Gen '~GenId}, {'text': PageTitle}] %}
+
+{% block page_inner %}
+
+<h1 class="mt-5">{{ PageTitle }}</h1>
+
+<div class="row">
+
+    <div class="col-12 col-md-12">
+
+        <p>
+            <a href="{{ route('user.pokedex.gen-list', {'genId': GenId}) }}">View all in Gen {{ GenId }}</a>.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-12 col-md-4">
+
+        <h2>Details</h2>
+        <table class="table table-responsive table-sm">
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>{{ Pokemon.pokemon_name }}</td>
+            </tr>
+            <tr>
+                <td><strong>Pokedex #</strong></td>
+                <td>{{ Pokemon.pokemon_no }}</td>
+            </tr>
+            <tr>
+                <td><strong>Generation</strong></td>
+                <td>{{ Pokemon.generation }}</td>
+            </tr>
+            <tr>
+                <td><strong>Available in game?</strong></td>
+                <td>
+                    {% if Pokemon.is_available %}
+                        <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    {% else %}
+                        <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Shiny available?</strong></td>
+                <td>
+                    {% if Pokemon.has_shiny %}
+                        <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    {% else %}
+                        <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Buddy distance</strong></td>
+                <td>{{ Pokemon.buddy_distance }}km</td>
+            </tr>
+            <tr>
+                <td><strong>Regional?</strong></td>
+                <td>
+                    {% if Pokemon.is_regional %}
+                        <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    {% else %}
+                        <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Legendary?</strong></td>
+                <td>
+                    {% if Pokemon.is_legendary %}
+                        <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    {% else %}
+                        <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Mythical?</strong></td>
+                <td>
+                    {% if Pokemon.is_mythical %}
+                        <div style="color: #009900; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    {% else %}
+                        <div style="color: #cc0000; font-size: 18px; font-weight: bold;">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+        {% if Pokemon.sprite_normal %}
+        <h2>Normal</h2>
+        {{ ImageHelper.spriteNormalBuilder(Pokemon) }}
+        {% endif %}
+
+        {% if Pokemon.sprite_shiny %}
+        <h2>Shiny</h2>
+        {{ ImageHelper.spriteShinyBuilder(Pokemon) }}
+        {% endif %}
+
+    </div>
+
+    <div class="col-12 col-md-4">
+
+    </div>
+
+</div>
+
+{% endblock page_inner %}

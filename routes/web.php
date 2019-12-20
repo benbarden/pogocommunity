@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@show')->name('welcome');
 
 // Static content
 Route::get('/privacy', 'StaticContentController@privacy')->name('static-content.privacy');
+Route::get('/about', 'StaticContentController@about')->name('static-content.about');
 
 Auth::routes();
 
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth.approved']], function() {
     Route::get('/user/pokedex/shinies', 'User\PokedexController@showShinies')->name('user.pokedex.shinies');
     Route::get('/user/pokedex/regionals', 'User\PokedexController@showRegionals')->name('user.pokedex.regionals');
     Route::get('/user/pokedex/legendaries-mythicals', 'User\PokedexController@showLegendariesMythicals')->name('user.pokedex.legendaries-mythicals');
+    Route::get('/user/pokedex/show/{pokemonNo}', 'User\PokedexController@showPokemon')->name('user.pokedex.showPokemon');
 
     // Maps (unfinished)
     Route::get('/user/maps/pokestops', 'User\MapsController@showPokestops')->name('user.maps.pokestops');

@@ -13,4 +13,14 @@ class StaticContentController extends Controller
 
         return view('static-content.privacy', $bindings);
     }
+
+    public function about()
+    {
+        $bindings = [];
+
+        $bindings['TopTitle'] = 'About';
+        $bindings['PageTitle'] = 'About';
+
+        return view('static-content.about', $bindings);
+    }
 }

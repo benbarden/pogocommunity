@@ -18,7 +18,9 @@
                         {{ item.pokemon_no }}
                     </td>
                     <td>
-                        {{ item.pokemon_name }}
+                        <a href="{{ route('user.pokedex.showPokemon', {'pokemonNo': item.pokemon_no}) }}">
+                            {{ item.pokemon_name }}
+                        </a>
                     </td>
                     <td class="text-center">
                         {% if item.buddy_distance %}

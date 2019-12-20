@@ -18,7 +18,7 @@ class Pokemon extends Model
     protected $fillable = [
         'pokemon_no', 'pokemon_name', 'generation',
         'is_available', 'is_regional', 'is_legendary', 'is_mythical',
-        'buddy_distance', 'has_shiny'
+        'buddy_distance', 'has_shiny', 'sprite_normal', 'sprite_shiny'
     ];
 
     /**
